@@ -107,6 +107,7 @@ function parallelCoordinates(file_name) {
         .data(data)
         .render()
         .updateAxes()
+        .reorderable()
         .brushMode("1D-axes");  // enable brushing
       
       change_color(sel_dim);
