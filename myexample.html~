@@ -1,0 +1,113 @@
+<!doctype html>
+<title>Parallel Coordinates</title>
+<link rel="stylesheet" type="text/css" href="d3.parcoords.css">
+<script src="examples/lib/d3.min.js"></script>
+<script src="examples/lib/sylvester.js"></script>
+<script src="examples/lib/slickgrid/jquery-1.7.min.js"></script>
+<script src="examples/lib/underscore.js"></script>
+<script src="examples/lib/underscore.math.js"></script>
+<script src="d3.parcoords.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<a href="https://github.com/syntagmatic/parallel-coordinates"><img style="position: absolute; top: 0; right: 0; border: 0;" src="forkme.png" alt="Fork me on GitHub"></a>
+<h1>Parallel Coordinates <small>(0.7.0)</small></h1>
+<p style="color: #a00;"></p>
+<p>A visual toolkit for <a href="http://www.cs.ucdavis.edu/~ma/ECS289H/papers/Inselberg1997.pdf">multidimensional detectives</a>.</p>
+<p><strong><a href="d3.parcoords.js">d3.parcoords.js</a></strong> <small> - requires <strong><a href="http://d3js.org/">D3.js</a></strong></small><br/>
+<strong><a href="d3.parcoords.css">d3.parcoords.css</a></strong> <small> - default styles</small></p>
+<p>This library is unstable and in development, but you're welcome to try it out.</p>
+<ul>
+  <li><a href="https://github.com/syntagmatic/parallel-coordinates#resources">Resources</a></li>
+  <li><a href="https://github.com/syntagmatic/parallel-coordinates#parallel-coordinates">API Reference</a></li>
+  <li><a href="https://github.com/syntagmatic/parallel-coordinates/issues">Issues</a></li>
+</ul>
+<h3>Examples</h3>
+<p>These standalone examples can be used as starting places for your own application.</p>
+<ul>
+  <li><a href="examples/basic.html">Basic</a></li>
+  <li><a href="examples/brushing.html">Brushing</a></li>
+  <li><a href="examples/table.html">Linking with a Data Table</a></li>
+  <li><a href="examples/slickgrid.html">Progressive Rendering and SlickGrid</a> - for larger datasets: 2k-200k rows</li>
+  <li><a href="examples/veterans.html">Wyoming Veteran Gravesites</a></li>
+  <li><a href="examples/upload.html">CSV Upload</a></li>
+  <li><a href="examples/reddit.html">Reddit Top 100</a></li>
+  <li><a href="examples/superformula.html">Superformula</a></li>
+  <li><a href="examples/download.html">Download screenshot of parallel coordinate</a></li>
+</ul>
+
+</script>
+<h3>Statistical Coloring</h3>
+
+<p>One useful way to use coloring is to compute a statistic for each row, and color by that value. This plot is colored by <a href="http://en.wikipedia.org/wiki/Standard_score">Z-score</a> along the *weight* dimension.</p>
+
+
+<p>Click a different axis label to color by Z-score for that dimension.</p>
+
+<div id="example-zscore" class="parcoords"></div>
+
+<!--
+<ul id="zscore-colors">
+  <li><input type="text" id="zscore-color0" value="green"/> - Positive Z-score</li>
+  <li><input type="text" id="zscore-color1" value="grey"/> - Near-zero Z-score</li>
+  <li><input type="text" id="zscore-color2" value="blue"/> - Negative Z-score</li>
+</ul>
+-->
+
+<pre><a href="#" class="show-code" data-code="zscore">Show code</a></pre>
+<script id="zscore">// this section uses underscore.js and underscore.math
+var pcz;
+
+// color scale for zscores
+var zcolorscale = d3.scale.linear()
+  .domain([-2,-0.5,0.5,2])
+  .range(["brown", "#999", "#999", "steelblue"])
+  .interpolate(d3.interpolateLab);
+
+// load csv file and create the chart
+d3.csv('examples/data/analysis.csv', function(data) {
+  pcz = d3.parcoords()("#example-zscore")
+    .data(data)
+    //.hideAxis(["name"])
+    .composite("darken")
+    .render()
+    .alpha(0.35)
+    .brushMode("1D-axes")  // enable brushing
+    .interactive()  // command line mode
+
+  change_color("weight (lb)");
+
+  // click label to activate coloring
+  pcz.svg.selectAll(".dimension")
+    .on("click", change_color)
+    .selectAll(".label")
+    .style("font-size", "14px");
+});
+
+// update color
+function change_color(dimension) {
+  pcz.svg.selectAll(".dimension")
+    .style("font-weight", "normal")
+    .filter(function(d) { return d == dimension; })
+    .style("font-weight", "bold")
+
+  pcz.color(zcolor(pcz.data(),dimension)).render()
+}
+
+// return color function based on plot and dimension
+function zcolor(col, dimension) {
+  var z = zscore(_(col).pluck(dimension).map(parseFloat).filter(function(value) { return !Number.isNaN(value) }))
+  return function(d) { return zcolorscale(z(d[dimension])) }
+};
+
+// color by zscore
+function zscore(col) {
+  var n = col.length,
+      mean = _(col).mean(),
+      sigma = _(col).stdDeviation();
+  return function(d) {
+    return (d-mean)/sigma;
+  };
+};
+
+</script>
+
+

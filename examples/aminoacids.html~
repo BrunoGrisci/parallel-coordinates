@@ -1,0 +1,130 @@
+<!doctype html>
+<title>Linking to Data Table</title>
+<link rel="stylesheet" type="text/css" href="../d3.parcoords.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<style>
+/* data table styles */
+#grid { height: 198px; }
+.row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px; }
+.row:nth-child(odd) { background: rgba(0,0,0,0.05); }
+.header { font-weight: bold; }
+.cell { float: left; overflow: hidden; white-space: nowrap; width: 100px; height: 18px; }
+.col-0 { width: 180px; }
+</style>
+<script src="lib/d3.min.js"></script>
+<script src="../d3.parcoords.js"></script>
+<script src="lib/divgrid.js"></script>
+<div id="example" class="parcoords" style="height:200px;"></div>
+<div id="grid"></div>
+<script id="brushing">// quantitative color scale
+var blue_to_brown = d3.scale.linear()
+  .domain([6, 9])
+  .range(["steelblue", "brown"])
+  .interpolate(d3.interpolateLab);
+
+var color = function(d) { return blue_to_brown(d['DSSP']); };
+
+var parcoords = d3.parcoords()("#example")
+  .color(color)
+  .alpha(0.4);
+
+// color scale for zscores
+var zcolorscale = d3.scale.linear()
+  //.domain([-2,-0.5,0.5,2])
+  .domain([3, 10])
+  .range(["brown", "#999", "#999", "steelblue"])
+  .interpolate(d3.interpolateLab);
+
+// load csv file and create the chart
+d3.csv('data/analysis.csv', function(data) {
+  parcoords
+    .data(data)
+    .hideAxis(["name"])
+    .render()
+    .brushMode("1D-axes");  // enable brushing
+
+  // create data table, row hover highlighting
+  var grid = d3.divgrid();
+  d3.select("#grid")
+    .datum(data.slice(0,10))
+    .call(grid)
+    .selectAll(".row")
+    .on({
+      "mouseover": function(d) { parcoords.highlight([d]) },
+      "mouseout": parcoords.unhighlight
+    });
+
+  // update data table on brush event
+  parcoords.on("brush", function(d) {
+    d3.select("#grid")
+      .datum(d.slice(0,10))
+      .call(grid)
+      .selectAll(".row")
+      .on({
+        "mouseover": function(d) { parcoords.highlight([d]) },
+        "mouseout": parcoords.unhighlight
+      });
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+var pcz;
+
+// color scale for zscores
+var zcolorscale = d3.scale.linear()
+  .domain([-2,-0.5,0.5,2])
+  .range(["brown", "#999", "#999", "steelblue"])
+  .interpolate(d3.interpolateLab);
+
+// load csv file and create the chart
+d3.csv('examples/data/analysis.csv', function(data) {
+  pcz = d3.parcoords()("#example-zscore")
+    .data(data)
+    //.hideAxis(["name"])
+    .composite("darken")
+    .render()
+    .alpha(0.35)
+    .brushMode("1D-axes")  // enable brushing
+    .interactive()  // command line mode
+
+  change_color("weight (lb)");
+
+  // click label to activate coloring
+  pcz.svg.selectAll(".dimension")
+    .on("click", change_color)
+    .selectAll(".label")
+    .style("font-size", "14px");
+});
+
+// update color
+function change_color(dimension) {
+  pcz.svg.selectAll(".dimension")
+    .style("font-weight", "normal")
+    .filter(function(d) { return d == dimension; })
+    .style("font-weight", "bold")
+
+  pcz.color(zcolor(pcz.data(),dimension)).render()
+}
+
+// return color function based on plot and dimension
+function zcolor(col, dimension) {
+  var z = zscore(_(col).pluck(dimension).map(parseFloat).filter(function(value) { return !Number.isNaN(value) }))
+  return function(d) { return zcolorscale(z(d[dimension])) }
+};
+
+// color by zscore
+function zscore(col) {
+  var n = col.length,
+      mean = _(col).mean(),
+      sigma = _(col).stdDeviation();
+  return function(d) {
+    return (d-mean)/sigma;
+  };
+};
