@@ -22,19 +22,15 @@
 <p>The current time step is <strong id="step">0.0</strong><br/>
 <input type="range" min="0" max="50000" value="0.0" step="2.0" id="timestep"/>
 
+
 <script id="brushing">// quantitative color scale
 
-//var blue_to_brown = d3.scale.linear()
-//  .domain([0, 100])
-//  .range(["steelblue", "brown"])
-//  .interpolate(d3.interpolateLab);
+var selecteds = []
 
 var zcolorscale = d3.scale.linear()
   .domain([-2,-0.5,0.5,2])
   .range(["brown", "#999", "#999", "steelblue"])
   .interpolate(d3.interpolateLab);
-
-//var color = function(d) {return blue_to_brown(d['AMINO ACID']);};
 
 var parcoords = d3.parcoords()("#example")
   //.color(color)
@@ -42,7 +38,7 @@ var parcoords = d3.parcoords()("#example")
 
 var selected = false;
 var sel_dim = 'DSSP';
-var file_name = 'data/analysis.csv'
+var file_name = 'data/STEPS/0.csv'
 
 function getMaxOfArray(numArray) {
     return Math.max.apply(null, numArray);
@@ -53,7 +49,7 @@ function change_color(dimension) {
   sel_dim = dimension;
   parcoords.svg.selectAll(".dimension")
     .style("font-weight", "normal")
-    .filter(function(d) { return d == dimension; })
+    .filter(function(d) {return d == dimension; })
     .style("font-weight", "bold");
 
   parcoords.color(zcolor(parcoords.data(),dimension)).render();
@@ -75,29 +71,9 @@ function zscore(col) {
   };
 };
 
-// update color
-//function change_color(dimension) {
-//  console.log(parcoords.svg.selectAll(".dimension"));
-//  parcoords.svg.selectAll(".dimension")
-//    .style("font-weight", "normal")
-//    .filter(function(d) {return d == dimension;})
-//    .style("font-weight", "bold");
-//  color = function(d) {return blue_to_brown(d[dimension]); };
-  //var new_value = function(d) {return d[dimension];};
-  //console.log(max_value, min_value);
-  //blue_to_brown
-  //  .domain([min_value, max_value]);
-//  parcoords
-//    .color(color)
-//    .render();
-//}
-
 function parallelCoordinates(file_name) {
     // load csv file and create the chart
-    d3.csv(file_name, function(data) {
-      //blue_to_brown
-      // .domain([16,19]);
-      
+    d3.csv(file_name, function(data) {      
       parcoords
         .dimensions({})
         .data([])
@@ -121,19 +97,38 @@ function parallelCoordinates(file_name) {
         .call(grid)
         .selectAll(".row")
         .on({
-          //"click": function(d) { if (!selected) {parcoords.highlight([d]); selected = true;}
-          //                       else {parcoords.unhighlight; selected = false;} },
-          //"mouseover": function(d) { if (!selected) {parcoords.highlight([d])}; },
-          //"mouseout": function(d) { if (!selected) {parcoords.unhighlight}; }
+          "click": function(d) { 
+                //parcoords.highlight([d]);
+                var i = selecteds.indexOf(d); 
+                if (i > -1) {
+                    selecteds.splice(i, 1);
+                }
+                else {
+                    selecteds.push(d);                
+                    console.log(selecteds); 
+                }  
+
+            },
           "mouseover": function(d) { parcoords.highlight([d]); },
-          "mouseout": parcoords.unhighlight
+          "mouseout": function() {//parcoords.unhighlight;
+                                  parcoords.clear("highlight");                                  
+                                  for (s in selecteds) {
+                                    parcoords.highlight([selecteds[s]]);
+                                  }
+                                  d3.selectAll([parcoords.canvas.foreground, parcoords.canvas.brushed]).classed("faded", false);
+                                 }
         });
         
      parcoords.svg.selectAll(".dimension")
         .on("click", change_color)
-        .selectAll(".label")
+        .selectAll(".label");
         //.style("font-size", "14px");  
-
+        
+      parcoords.on("highlight", function(d) {
+            //console.log(d);
+        }
+      );  
+        
       // update data table on brush event
       parcoords.on("brush", function(d) {
         d3.select("#grid")
@@ -141,15 +136,33 @@ function parallelCoordinates(file_name) {
           .datum(d)
           .call(grid)
           .selectAll(".row")
-          .on({
-            "mouseover": function(d) { parcoords.highlight([d]) },
-            "mouseout": parcoords.unhighlight
-          });
+        .on({
+          "click": function(d) { 
+                //parcoords.highlight([d]);
+                var i = selecteds.indexOf(d); 
+                if (i > -1) {
+                    selecteds.splice(i, 1);
+                }
+                else {
+                    selecteds.push(d);                
+                    console.log(selecteds); 
+                }  
+
+            },
+          "mouseover": function(d) { parcoords.highlight([d]); },
+          "mouseout": function() {//parcoords.unhighlight;
+                                  parcoords.clear("highlight");                                  
+                                  for (s in selecteds) {
+                                    parcoords.highlight([selecteds[s]]);
+                                  }
+                                  d3.selectAll([parcoords.canvas.foreground, parcoords.canvas.brushed]).classed("faded", false);
+                                 }
+        });
       });
       
         d3.select("#timestep").on("change", function() {
 		    d3.select("#step").text(this.value);
-            parallelCoordinates('data/analysis2.csv')
+            parallelCoordinates('data/STEP/' + this.value.toString() + '.csv');
         });
       
     });
