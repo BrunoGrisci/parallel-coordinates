@@ -226,7 +226,9 @@ pc.autoscale = function() {
 
       return d3.scale.linear()
         .domain(extent)
+        .domain([-1000,1000, 0,2])
         .range(getRange());
+        //.range([0,2000]);
     },
     "string": function(k) {
       var counts = {},
@@ -2384,7 +2386,7 @@ pc.highlight = function(data) {
 
   __.highlighted = data;
   //pc.clear("highlight");
-  //d3.selectAll([canvas.foreground, canvas.brushed]).classed("faded", true);
+  d3.selectAll([canvas.foreground, canvas.brushed]).classed("faded", true);
   data.forEach(path_highlight);
   events.highlight.call(this, data);
   return this;

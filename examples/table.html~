@@ -81,6 +81,7 @@ function parallelCoordinates(file_name) {
       
       parcoords
         .data(data)
+        .autoscale()
         .render()
         .updateAxes()
         .reorderable()
@@ -162,7 +163,7 @@ function parallelCoordinates(file_name) {
       
         d3.select("#timestep").on("change", function() {
 		    d3.select("#step").text(this.value);
-            parallelCoordinates('data/STEP/' + this.value.toString() + '.csv');
+            parallelCoordinates('data/STEPS/' + this.value.toString() + '.csv');
         });
       
     });
