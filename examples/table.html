@@ -19,8 +19,8 @@
 <div id="example" class="parcoords" style="height:250px;"></div>
 <div id="grid"></div>
 
-<p>The current time step is <strong id="step">0.0</strong><br/>
-<input type="range" min="0" max="50000" value="0.0" step="2.0" id="timestep"/>
+<p>The current time step is <strong id="step">30000.0</strong><br/>
+<input type="range" min="30000" max="50000" value="0.0" step="2.0" id="timestep"/>
 
 
 <script id="brushing">// quantitative color scale
@@ -38,7 +38,7 @@ var pc = d3.parcoords()("#example")
 
 var selected = false;
 var sel_dim = ' DSSP';
-var file_name = 'data/STEPS/0.csv'
+var file_name = 'data/STEPS/30000.csv'
 
 function getMaxOfArray(numArray) {
     return Math.max.apply(null, numArray);
@@ -111,9 +111,9 @@ function parallelCoordinates(file_name) {
         .brushMode("1D-axes");  // enable brushing
       
       pc.dimensions()[' DSSP'].yscale.domain([0,20]);
-      pc.dimensions()[' SASA'].yscale.domain([22,34]);
-      pc.dimensions()[' GYRATE'].yscale.domain([0.7,1.1]);
-      pc.dimensions()[' ENERGY'].yscale.domain([-91000,-78000]);
+      pc.dimensions()[' SASA'].yscale.domain([21,36]);
+      pc.dimensions()[' GYRATE'].yscale.domain([0.7,1.2]);
+      pc.dimensions()[' ENERGY'].yscale.domain([-90360,-77565]);
       pc.dimensions()[' RMSF'].yscale.domain([0.2,0.4]);   
       pc.updateAxes();
       
@@ -167,6 +167,7 @@ function parallelCoordinates(file_name) {
         
       // update data table on brush event
       pc.on("brush", function(d) {
+        console.log(pc.brushed());
         d3.select("#grid")
           //.datum(d.slice(0,10))
           .datum(d)
