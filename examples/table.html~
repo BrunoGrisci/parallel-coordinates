@@ -20,7 +20,7 @@
 <div id="grid"></div>
 
 <p>The current time step is <strong id="step">30000.0</strong><br/>
-<input type="range" min="30000" max="50000" value="0.0" step="2.0" id="timestep"/>
+<input type="range" min="30000" max="50000" value="0.0" step="1000.0" id="timestep"/>
 
 
 <script id="brushing">// quantitative color scale
@@ -110,10 +110,10 @@ function parallelCoordinates(file_name) {
         .reorderable()
         .brushMode("1D-axes");  // enable brushing
       
-      pc.dimensions()[' DSSP'].yscale.domain([0,20]);
+      pc.dimensions()[' DSSP'].yscale.domain([0,18]);
       pc.dimensions()[' SASA'].yscale.domain([21,36]);
       pc.dimensions()[' GYRATE'].yscale.domain([0.7,1.2]);
-      pc.dimensions()[' ENERGY'].yscale.domain([-90360,-77565]);
+      pc.dimensions()[' ENERGY'].yscale.domain([-83000,-76000]);
       pc.dimensions()[' RMSF'].yscale.domain([0.2,0.4]);   
       pc.updateAxes();
       
@@ -167,7 +167,7 @@ function parallelCoordinates(file_name) {
         
       // update data table on brush event
       pc.on("brush", function(d) {
-        console.log(pc.brushed());
+        //console.log(pc.brushed());
         d3.select("#grid")
           //.datum(d.slice(0,10))
           .datum(d)
