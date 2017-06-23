@@ -225,8 +225,8 @@ pc.autoscale = function() {
       }
 
       return d3.scale.linear()
-        //.domain(extent)
-        .domain([-1000,1000])
+        .domain(extent)
+        //.domain([-1000,1000])
         .range(getRange());
         //.range([0,2000]);
     },
@@ -2364,7 +2364,7 @@ pc.resize = function() {
   pc.svg.attr("transform", "translate(" + __.margin.left + "," + __.margin.top + ")");
 
   // FIXME: the current brush state should pass through
-  if (flags.brushable) pc.brushReset();
+  //if (flags.brushable) pc.brushReset();
 
   // scales
   pc.autoscale();
