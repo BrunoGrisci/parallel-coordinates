@@ -226,7 +226,7 @@ pc.autoscale = function() {
 
       return d3.scale.linear()
         .domain(extent)
-        //.domain([-1000,1000, 0,2])
+        //.domain([-1000,1000])
         .range(getRange());
         //.range([0,2000]);
     },

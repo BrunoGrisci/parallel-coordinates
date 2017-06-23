@@ -32,12 +32,12 @@ var zcolorscale = d3.scale.linear()
   .range(["brown", "#999", "#999", "steelblue"])
   .interpolate(d3.interpolateLab);
 
-var parcoords = d3.parcoords()("#example")
+var pc = d3.parcoords()("#example")
   //.color(color)
   .alpha(0.4);
 
 var selected = false;
-var sel_dim = 'DSSP';
+var sel_dim = ' DSSP';
 var file_name = 'data/STEPS/0.csv'
 
 function getMaxOfArray(numArray) {
@@ -47,12 +47,19 @@ function getMaxOfArray(numArray) {
 // update color
 function change_color(dimension) {
   sel_dim = dimension;
-  parcoords.svg.selectAll(".dimension")
+  pc.svg.selectAll(".dimension")
     .style("font-weight", "normal")
     .filter(function(d) {return d == dimension; })
     .style("font-weight", "bold");
 
-  parcoords.color(zcolor(parcoords.data(),dimension)).render();
+  pc.color(zcolor(pc.data(),dimension)).render();
+  
+  pc.clear("highlight");                                  
+  for (s in selecteds) {
+    pc.highlight([selecteds[s]]);
+  }
+  d3.selectAll([pc.canvas.foreground, pc.canvas.brushed]).classed("faded", false);  
+  
 }
 
 // return color function based on plot and dimension
@@ -74,19 +81,47 @@ function zscore(col) {
 function parallelCoordinates(file_name) {
     // load csv file and create the chart
     d3.csv(file_name, function(data) {      
-      parcoords
-        .dimensions({})
-        .data([])
-        .render();
-      
-      parcoords
-        .data(data)
-        .autoscale()
-        .render()
-        .updateAxes()
+
+/*    var dimensions = {
+        'DSSP': {
+            yscale: log,
+            tickFormat: function(d){
+                return log.tickFormat(4,d3.format(",d"))(d);
+            }
+        },
+        'power (hp)': {
+            title: "MMhhm Power",
+            innerTickSize: 10,
+            outerTickSize: 20
+        },
+        'AMINO ACID': {
+            orient: 'right',
+            type: 'string',
+            tickPadding: 0,
+            innerTickSize: 8
+        }
+    };*/
+
+      pc
+        .dimensions({})   
+        .data([]) 
+        .data(data)     
+        .render() 
         .reorderable()
         .brushMode("1D-axes");  // enable brushing
       
+      pc.dimensions()[' DSSP'].yscale.domain([0,20]);
+      pc.dimensions()[' SASA'].yscale.domain([22,34]);
+      pc.dimensions()[' GYRATE'].yscale.domain([0.7,1.1]);
+      pc.dimensions()[' ENERGY'].yscale.domain([-91000,-78000]);
+      pc.dimensions()[' RMSF'].yscale.domain([0.2,0.4]);   
+      pc.updateAxes();
+      
+      /*for (d in pc.dimensions()) {      
+        console.log(pc.dimensions()[d].yscale.domain());
+      }  
+      console.log(pc.dimensions()); */
+             
       change_color(sel_dim);
 
       // create data table, row hover highlighting
@@ -99,7 +134,7 @@ function parallelCoordinates(file_name) {
         .selectAll(".row")
         .on({
           "click": function(d) { 
-                //parcoords.highlight([d]);
+                //pc.highlight([d]);
                 var i = selecteds.indexOf(d); 
                 if (i > -1) {
                     selecteds.splice(i, 1);
@@ -110,28 +145,28 @@ function parallelCoordinates(file_name) {
                 }  
 
             },
-          "mouseover": function(d) { parcoords.highlight([d]); },
-          "mouseout": function() {//parcoords.unhighlight;
-                                  parcoords.clear("highlight");                                  
+          "mouseover": function(d) { pc.highlight([d]); },
+          "mouseout": function() {//pc.unhighlight;
+                                  pc.clear("highlight");                                  
                                   for (s in selecteds) {
-                                    parcoords.highlight([selecteds[s]]);
+                                    pc.highlight([selecteds[s]]);
                                   }
-                                  d3.selectAll([parcoords.canvas.foreground, parcoords.canvas.brushed]).classed("faded", false);
+                                  d3.selectAll([pc.canvas.foreground, pc.canvas.brushed]).classed("faded", false);
                                  }
         });
         
-     parcoords.svg.selectAll(".dimension")
+     pc.svg.selectAll(".dimension")
         .on("click", change_color)
         .selectAll(".label");
         //.style("font-size", "14px");  
         
-      parcoords.on("highlight", function(d) {
+/*      pc.on("highlight", function(d) {
             //console.log(d);
         }
-      );  
+      );  */
         
       // update data table on brush event
-      parcoords.on("brush", function(d) {
+      pc.on("brush", function(d) {
         d3.select("#grid")
           //.datum(d.slice(0,10))
           .datum(d)
@@ -139,7 +174,7 @@ function parallelCoordinates(file_name) {
           .selectAll(".row")
         .on({
           "click": function(d) { 
-                //parcoords.highlight([d]);
+                //pc.highlight([d]);
                 var i = selecteds.indexOf(d); 
                 if (i > -1) {
                     selecteds.splice(i, 1);
@@ -150,13 +185,13 @@ function parallelCoordinates(file_name) {
                 }  
 
             },
-          "mouseover": function(d) { parcoords.highlight([d]); },
-          "mouseout": function() {//parcoords.unhighlight;
-                                  parcoords.clear("highlight");                                  
+          "mouseover": function(d) { pc.highlight([d]); },
+          "mouseout": function() {//pc.unhighlight;
+                                  pc.clear("highlight");                                  
                                   for (s in selecteds) {
-                                    parcoords.highlight([selecteds[s]]);
+                                    pc.highlight([selecteds[s]]);
                                   }
-                                  d3.selectAll([parcoords.canvas.foreground, parcoords.canvas.brushed]).classed("faded", false);
+                                  d3.selectAll([pc.canvas.foreground, pc.canvas.brushed]).classed("faded", false);
                                  }
         });
       });
