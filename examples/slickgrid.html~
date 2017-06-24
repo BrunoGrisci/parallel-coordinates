@@ -135,7 +135,13 @@ d3.csv('data/nutrients.csv', function(data) {
     elementPos = d.map(function(x) {return x.id; }).indexOf(item_id);
     // Highlight that element in the parallel coordinates graph
     parcoords.highlight([d[elementPos]]);
-      
+    
+    
+    var rowId=dataView.getRowById(idvalue);//id of the row to be highlighted, as slickgrid enforced an id field
+    grid.scrollRowToTop(rowId);//makes the row visible
+    grid.getColumns().forEach(function(col){//get all the columns
+    grid.flashCell(rowId, grid.getColumnIndex(col.id));//flash it
+    
   });
 
   grid.onMouseLeave.subscribe(function(e,args) {
