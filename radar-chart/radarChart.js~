@@ -41,7 +41,7 @@ function RadarChart(id, data, options) {
 	//Scale for the radius
 	var rScale = d3.scale.linear()
 		.range([0, radius])
-		.domain([0, maxValue]);
+		.domain([-100, maxValue]);
 		
 	/////////////////////////////////////////////////////////
 	//////////// Create the container SVG and g /////////////
