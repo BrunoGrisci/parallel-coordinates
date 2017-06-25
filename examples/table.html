@@ -1,4 +1,5 @@
 <!doctype html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
 <title>Linking to Data Table</title>
 
 <!-- SlickGrid -->
@@ -40,27 +41,39 @@ body, html {
 }
 .slick-row:hover {
   font-weight: bold;
+  background: 	#DCDCDC;
   color: #069;
 }
-/*/* data table styles 
-#grid { height: 198px; }
-.row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px; }
-.row:nth-child(odd) { background: rgba(0,0,0,0.05); }
-.header { font-weight: bold; }
-.cell { float: left; overflow: hidden; white-space: nowrap; width: 100px; height: 18px; }
-.col-0 { width: 180px; }*/
+
+.legend {
+	font-family: 'Raleway', sans-serif;
+	fill: #333333;
+}
+
+.tooltip {
+	fill: #333333;
+}
+
 </style>
 <script src="lib/d3.min.js"></script>
 <script src="../d3.parcoords.js"></script>
 <script src="lib/divgrid.js"></script>
 <script src="lib/underscore.js"></script>
 <script src="lib/underscore.math.js"></script>
-<div id="example" class="parcoords" style="height:250px;"></div>
-<div id="grid"></div>
+
+<!-- Radar Chart -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+<script src="../radar-chart/radarChart.js"></script>
+
+<!-- End Radar Chart -->
 
 <p>The current time step is <strong id="step">30000.0</strong><br/>
-<input type="range" min="30000" max="50000" value="0.0" step="1000.0" id="timestep"/>
+<input type="range" min="30000" max="50000" value="30000.0" step="100.0" id="timestep" style="width:250px;"/>
 
+<div id="example" class="parcoords" style="height:250px;"></div>
+<div id="grid" style="width:600px;"></div>
+<div id="radar" class="radarChart" align="right"></div>
 
 <script id="brushing">// quantitative color scale
 
@@ -74,6 +87,25 @@ var zcolorscale = d3.scale.linear()
 var pc = d3.parcoords()("#example")
   //.color(color)
   .alpha(0.4);
+
+
+var rccolor = d3.scale.ordinal()
+    .range(["#EDC951","#CC333F","#00A0B0"]);
+
+var rcmargin = {top: 100, right: 100, bottom: 100, left: 100},
+	width = Math.min(700, window.innerWidth - 10) - rcmargin.left - rcmargin.right,
+	height = Math.min(width, window.innerHeight - rcmargin.top - rcmargin.bottom - 20);
+
+var radarChartOptions = {
+  w: 450,
+  h: 450,
+  margin: rcmargin,
+  minValue: 0,
+  maxValue: 1,
+  levels: 5,
+  roundStrokes: false,
+  color: rccolor
+};
 
 var selected = false;
 var sel_dim = ' DSSP';
@@ -145,8 +177,8 @@ function parallelCoordinates(file_name) {
       data.forEach(function(d) {
         var s = selecteds.indexOf(d.id);
         if (s > -1) {
-            console.log(selecteds[s]);
-            console.log([d.id]);
+            //console.log(selecteds[s]);
+            //console.log([d.id]);
             pc.highlight([d]);
         }                                     
       }); 
@@ -165,9 +197,33 @@ function parallelCoordinates(file_name) {
         parallelCoordinates('data/STEPS/' + this.value.toString() + '.csv');
     });
 
+////////////////////////////////////////////////////////////////////////////////
+	
+	var rcdata = [];
+    data.forEach(function(d) {
+        var s = selecteds.indexOf(d.id);
+        if (s > -1) {
+            rcdata.push([
+                {axis: "DSSP", value:d[" DSSP"]},
+                {axis: "SASA", value:d[" SASA"]},
+                {axis: "GYRATE", value:d[" GYRATE"]},                
+                {axis: "ENERGY", value:d[" ENERGY"]},
+                {axis: "RMSF", value:d[" RMSF"]}
+            ])    
+        }                                     
+    }); 
+	
+    //Call function to draw the Radar chart
+    if (rcdata.length <= 0) {
+        rcdata.push([{axis:"", value:0.0}]);    
+    }
+    RadarChart(".radarChart", rcdata, radarChartOptions);
+
+////////////////////////////////////////////////////////////////////////////////
+
   // setting up grid
   var column_keys = d3.keys(data[0]);
-  console.log(column_keys);
+  //console.log(column_keys);
   var columns = column_keys.map(function(key,i) {
     return {
       id: key,
@@ -176,7 +232,7 @@ function parallelCoordinates(file_name) {
       sortable: true
     }
   });
-  console.log(columns);
+  //console.log(columns);
 
   var options = {
     enableCellNavigation: true,
@@ -232,10 +288,47 @@ function parallelCoordinates(file_name) {
     var i = selecteds.indexOf(item_id); 
     if (i > -1) {
         selecteds.splice(i, 1);
+	    var rcdata = [];
+        data.forEach(function(d) {
+            var s = selecteds.indexOf(d.id);
+            if (s > -1) {
+                rcdata.push([
+                    {axis: "DSSP", value:d[" DSSP"]},
+                    {axis: "SASA", value:d[" SASA"]},
+                    {axis: "GYRATE", value:d[" GYRATE"]},
+                    {axis: "ENERGY", value:d[" ENERGY"]},
+                    {axis: "RMSF", value:d[" RMSF"]}
+                ])    
+            }                                     
+        }); 
+        //Call function to draw the Radar chart
+        if (rcdata.length <= 0) {
+            rcdata.push([{axis:"", value:0.0}]);    
+        }
+        RadarChart(".radarChart", rcdata, radarChartOptions);
     }
     else {
-        selecteds.push(item_id);                
-        console.log(selecteds); 
+        selecteds.push(item_id); 
+
+	    var rcdata = [];
+        data.forEach(function(d) {
+            var s = selecteds.indexOf(d.id);
+            if (s > -1) {
+                rcdata.push([
+                    {axis: "DSSP", value:d[" DSSP"]},
+                    {axis: "SASA", value:d[" SASA"]},
+                    {axis: "GYRATE", value:d[" GYRATE"]},                    
+                    {axis: "ENERGY", value:d[" ENERGY"]},
+                    {axis: "RMSF", value:d[" RMSF"]}
+                ])    
+            }                                     
+        }); 
+        //Call function to draw the Radar chart
+        if (rcdata.length <= 0) {
+            rcdata.push([{axis:"", value:0.0}]);    
+        }
+        RadarChart(".radarChart", rcdata, radarChartOptions); 
+        console.log(rcdata);     
     }  
 
   });
