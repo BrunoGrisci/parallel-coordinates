@@ -173,6 +173,11 @@ function updateRadarChart(data) {
                 {axis: "ENERGY", value: radarChartScale(selectedtemp[" ENERGY"], -83000, -76000)},
                 {axis: "RMSF", value: radarChartScale(selectedtemp[" RMSF"], 0.2, 0.4)}        
         ]);   
+    }
+    else {
+        if (selecteds.indexOf(selectedtemp.id) > -1) {
+            
+        }
     } 
     //Call function to draw the Radar chart
     if (rcdata.length <= 0) {
