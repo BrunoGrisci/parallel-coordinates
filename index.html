@@ -98,15 +98,14 @@ var rcmargin = {top: 100, right: 100, bottom: 100, left: 100},
 	height = Math.min(width, window.innerHeight - rcmargin.top - rcmargin.bottom - 20);
 
 var radarChartOptions = {
-  width: 550,
-  height: 550,
+  width: 600,
+  height: 600,
   margin: rcmargin,
   circles: { 
      levels: 5, 
      maxValue: 1
   },
   areas: {
-     //colors: {},            // color lookup by key
      rounded: false
   },
     legend: {
@@ -181,7 +180,8 @@ function updateRadarChart(data) {
                 {"axis": "SASA", "value": radarChartScale(d[" SASA"], 21, 36)},
                 {"axis": "GYRATE", "value": radarChartScale(d[" GYRATE"], 0.7, 1.2)},                
                 {"axis": "ENERGY", "value": radarChartScale(d[" ENERGY"], -83000, -76000)},
-                {"axis": "RMSF", "value": radarChartScale(d[" RMSF"], 0.2, 0.4)}]
+                {"axis": "RMSF", "value": radarChartScale(d[" RMSF"], 0.2, 0.4)}
+                ]
             });               
         }                                            
     }); 
@@ -193,7 +193,8 @@ function updateRadarChart(data) {
                 {"axis": "SASA", "value": radarChartScale(selectedtemp[" SASA"], 21, 36)},
                 {"axis": "GYRATE", "value": radarChartScale(selectedtemp[" GYRATE"], 0.7, 1.2)},                
                 {"axis": "ENERGY", "value": radarChartScale(selectedtemp[" ENERGY"], -83000, -76000)},
-                {"axis": "RMSF", "value": radarChartScale(selectedtemp[" RMSF"], 0.2, 0.4)}]        
+                {"axis": "RMSF", "value": radarChartScale(selectedtemp[" RMSF"], 0.2, 0.4)}
+                ]        
         });   
     }
     
