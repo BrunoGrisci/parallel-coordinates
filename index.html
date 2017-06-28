@@ -64,6 +64,7 @@ body, html {
 <!-- Radar Chart -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.3.0/d3-legend.js" charset="utf-8"></script>
 <script src="radar-chart/radarChart.js"></script>
 
 <!-- End Radar Chart -->
@@ -73,7 +74,7 @@ body, html {
 
 <div id="example" class="parcoords" style="height:250px;"></div>
 <div id="grid" style="width:560px;"></div>
-<div id="radar" class="radarChart" align="right"></div>
+<div id="radarChart" align="right"></div>
 
 <script id="brushing">// quantitative color scale
 
@@ -97,14 +98,28 @@ var rcmargin = {top: 100, right: 100, bottom: 100, left: 100},
 	height = Math.min(width, window.innerHeight - rcmargin.top - rcmargin.bottom - 20);
 
 var radarChartOptions = {
-  w: 450,
-  h: 450,
+  width: 550,
+  height: 550,
   margin: rcmargin,
-  maxValue: 1,
-  levels: 5,
-  roundStrokes: false,
+  circles: { 
+     levels: 5, 
+     maxValue: 1
+  },
+  areas: {
+     //colors: {},            // color lookup by key
+     rounded: false
+  },
+    legend: {
+     symbol: 'triangle-up', // 'circle', 'cross', 'diamond', 'triangle-up', 'triangle-down'
+     toggle: 'triangle-down',
+    },
   color: rccolor
 };
+
+var radarChart = RadarChart(); 
+d3.select('#radarChart')
+    .call(radarChart);
+radarChart.options(radarChartOptions).update();
 
 var selecteds = [];
 var selectedtemp = null;
@@ -159,29 +174,40 @@ function updateRadarChart(data) {
     data.forEach(function(d) {
         var s = selecteds.indexOf(d.id);
         if (s > -1) {
-            rcdata.push([
-                {axis: "DSSP", value: radarChartScale(d[" DSSP"], 0, 18)},
-                {axis: "SASA", value: radarChartScale(d[" SASA"], 21, 36)},
-                {axis: "GYRATE", value: radarChartScale(d[" GYRATE"], 0.7, 1.2)},                
-                {axis: "ENERGY", value: radarChartScale(d[" ENERGY"], -83000, -76000)},
-                {axis: "RMSF", value: radarChartScale(d[" RMSF"], 0.2, 0.4)}
-            ]);               
+            rcdata.push({
+                "key": d["AMINO ACID"],
+                "values":[
+                {"axis": "DSSP", "value": radarChartScale(d[" DSSP"], 0, 18)},
+                {"axis": "SASA", "value": radarChartScale(d[" SASA"], 21, 36)},
+                {"axis": "GYRATE", "value": radarChartScale(d[" GYRATE"], 0.7, 1.2)},                
+                {"axis": "ENERGY", "value": radarChartScale(d[" ENERGY"], -83000, -76000)},
+                {"axis": "RMSF", "value": radarChartScale(d[" RMSF"], 0.2, 0.4)}]
+            });               
         }                                            
     }); 
     if (selectedtemp != null && selecteds.indexOf(selectedtemp.id) < 0) {
-        rcdata.push([
-                {axis: "DSSP", value: radarChartScale(selectedtemp[" DSSP"], 0, 18)},
-                {axis: "SASA", value: radarChartScale(selectedtemp[" SASA"], 21, 36)},
-                {axis: "GYRATE", value: radarChartScale(selectedtemp[" GYRATE"], 0.7, 1.2)},                
-                {axis: "ENERGY", value: radarChartScale(selectedtemp[" ENERGY"], -83000, -76000)},
-                {axis: "RMSF", value: radarChartScale(selectedtemp[" RMSF"], 0.2, 0.4)}        
-        ]);   
+        rcdata.push({
+                "key": selectedtemp["AMINO ACID"],
+                "values":[
+                {"axis": "DSSP", "value": radarChartScale(selectedtemp[" DSSP"], 0, 18)},
+                {"axis": "SASA", "value": radarChartScale(selectedtemp[" SASA"], 21, 36)},
+                {"axis": "GYRATE", "value": radarChartScale(selectedtemp[" GYRATE"], 0.7, 1.2)},                
+                {"axis": "ENERGY", "value": radarChartScale(selectedtemp[" ENERGY"], -83000, -76000)},
+                {"axis": "RMSF", "value": radarChartScale(selectedtemp[" RMSF"], 0.2, 0.4)}]        
+        });   
     }
+    
+    var displaylegend = false;
     //Call function to draw the Radar chart
     if (rcdata.length <= 0) {
-        rcdata.push([{axis:"", value:0.0}]);    
+        rcdata.push({"key":"", "values":[{"axis":"", "value":0.0}]});  
+        displaylegend = false; 
     }
-    RadarChart(".radarChart", rcdata, radarChartOptions);
+    else {
+        displaylegend = true;
+    }
+    radarChart.options({'legend': {display: displaylegend}});
+    radarChart.data(rcdata).update();
 }
 
 function updateHighlights(data) {
