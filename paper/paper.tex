@@ -259,14 +259,16 @@ one or two words; separated by semicolon; from specific; to generic fields;
 \section{Introduction}
 %
 
+Proteins are polymers formed by a sequence of 20 different possible amino acids that under physiological conditions fold into a precise shape known as its native state~\cite{anfinsen:1973}. Each amino acid has an alpha carbon (\texttt{CA}) with bonds to amino (\texttt{NH2}) and carboxyl (\texttt{COOH}) groups and a variable side-chain (\texttt{R}) that determines the particular physicochemical properties of each residue. A peptide is a molecule composed of two or more amino acids chained by a chemical bond called the \textit{peptide bond}. This bond is formed when the carboxyl group of one residue reacts with the amino group of the other residue, releasing a water molecule. The interaction between amino acids in a protein causes the polypeptide chain to fold, usually in a proper configuration, as \texttt{$\alpha$-helix}, \texttt{$\beta$-sheet}, \texttt{coil} or \texttt{turn}. These local folding patterns represent the secondary structure of a protein. The topology or fold is given by the succession of secondary structures connected in a \texttt{3D} space. The specific characteristics of the peptide bond have significant implications for the \texttt{3D} fold that can be adopted by polypeptides. The peptide bond (\texttt{C-N}) has a double bond, and it is not allowed rotation of the molecule around this bond. The rotation is only permitted around the bonds \texttt{N-C$\alpha$} and \texttt{C}$_{\alpha}$\texttt{-C}. The analysis of experimental protein structures (\texttt{X}-ray data) reveals that amino acid residues can assume many conformations in proteins~\cite{Borguesan:2015}. Each amino acid has a set of physiochemical properties which contributes to its intrinsic conformational preference~\cite{Mathura:2005}. Amino acids in a secondary structure usually adopt a particular set of backbone torsion angles~\cite{Borguesan:2015}.
+
 \subsection{Related work}
 %
 
-\subimages[htb]{Technique overview}{overview}{%
-  \subimage[First step]{.31}{sibgrapi}%
-  \subimage[Second step]{.31}{sibgrapi}%
-  \subimage[Result]{.31}{sibgrapi}%
-}
+%\subimages[htb]{Technique overview}{overview}{%
+%  \subimage[First step]{.31}{sibgrapi}%
+%  \subimage[Second step]{.31}{sibgrapi}%
+%  \subimage[Result]{.31}{sibgrapi}%
+%}
 
 %==========================================
 \section{Data characterization}
@@ -296,25 +298,38 @@ one or two words; separated by semicolon; from specific; to generic fields;
 %==========================================
 \section{Technical background}
 %
-In this section, we detail this classical technique. The reader can find a more complete exposition in the work of Paul~\cite{Sibgrapi2015}.
 
 %------------------------------------------------------------------------- 
 \section{Technique overview}
 %
-In order to produce this application, we start with this processing, followed by this technique. In order to cope with this challenge, we introduce this formulation to produce this intermediate result. The formulation leads to this type of system, which is efficiently solved by adapting this technique. The final result is produced by this transform. The whole process is schematized in \figref{overview}.
 
 \subsection{Grid}
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{figs/grid.png}
+\caption{Overview of the used grid.} 
+\label{fig:grid}
+\end{figure}
 \paragraph*{Item highlighting}
 \paragraph*{Item selection}
 
 \subsection{Parallel Coordinates}
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{figs/brush.png}
+\caption{Example of the use of brush.} 
+\label{fig:brush}
+\end{figure}
+\paragraph*{Axis brushing} Fig.~\ref{fig:brush}
 
-\paragraph*{Axis brushing}
 \paragraph*{Axis sorting}
 \paragraph*{Axis reordering}
 \paragraph*{Recoloring by axis selection}
 
 \subsection{Radar Plot}
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{figs/radar.png}
+\caption{Example of one amino acid being visualized in the radar plot.} 
+\label{fig:radar}
+\end{figure}
 \paragraph*{Item highlighting}
 
 \subsection{Slider}
@@ -339,7 +354,7 @@ In order to produce this application, we start with this processing, followed by
 %==========================================
 \section{Conclusion}
 %
-
+A demo can be tested at: http://inf.ufrgs.br/~bigrisci/parallel-coordinates/examples/table.html
 
 
 %==========================================
@@ -347,7 +362,7 @@ In order to produce this application, we start with this processing, followed by
 % use section* for acknowledgement
 \section*{Acknowledgment}
 %
-The authors would like to thank this colleague and this financing institute.
+
 \fi
 
 
@@ -363,6 +378,6 @@ The authors would like to thank this colleague and this financing institute.
 %\IEEEtriggercmd{\enlargethispage{-5in}}
 
 \bibliographystyle{IEEEtran}
-\bibliography{example}
+\bibliography{my}
 
 \end{document}
