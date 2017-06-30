@@ -110,7 +110,6 @@ var radarChartOptions = {
   },
     legend: {
      symbol: 'triangle-up', // 'circle', 'cross', 'diamond', 'triangle-up', 'triangle-down'
-     toggle: 'triangle-down',
     },
   color: rccolor
 };
@@ -120,11 +119,15 @@ d3.select('#radarChart')
     .call(radarChart);
 radarChart.options(radarChartOptions).update();
 
+var axesorder = [];
 var selecteds = [];
 var selectedtemp = null;
 var selected = false;
 var sel_dim = ' DSSP';
 var file_name = 'data/STEPS/30000.csv';
+
+var minValues = {" DSSP":0,  " SASA":21, " GYRATE":0.7, " ENERGY":-83000, " RMSF":0.2}; 
+var maxValues = {" DSSP":18, " SASA":36, " GYRATE":1.2, " ENERGY":-76000, " RMSF":0.4};
 
 // update color
 function changeColor(dimension) {
@@ -168,34 +171,32 @@ function radarChartScale(value, minValue, maxValue) {
     return rcs(value);   
 }
 
+function createRadarLine(key, dimensions, d) {
+    var line =  {"key": key,
+                 "values":[]};
+    for (dim in dimensions) {
+        if (dimensions[dim] != "AMINO ACID") {
+            var k = dimensions[dim];
+            var value = {
+                "axis": dimensions[dim].replace(/\s+/g, ''),
+                "value": radarChartScale(d[k],minValues[k],maxValues[k])
+            };
+            line.values.push(value);
+        } 
+    }            
+    return line; 
+}
+
 function updateRadarChart(data) {
     var rcdata = [];
-    data.forEach(function(d) {
+    data.forEach(function(d) {  
         var s = selecteds.indexOf(d.id);
         if (s > -1) {
-            rcdata.push({
-                "key": d["AMINO ACID"],
-                "values":[
-                {"axis": "DSSP", "value": radarChartScale(d[" DSSP"], 0, 18)},
-                {"axis": "SASA", "value": radarChartScale(d[" SASA"], 21, 36)},
-                {"axis": "GYRATE", "value": radarChartScale(d[" GYRATE"], 0.7, 1.2)},                
-                {"axis": "ENERGY", "value": radarChartScale(d[" ENERGY"], -83000, -76000)},
-                {"axis": "RMSF", "value": radarChartScale(d[" RMSF"], 0.2, 0.4)}]
-                ]
-            });               
+            rcdata.push(createRadarLine(d["AMINO ACID"], axesorder, d));              
         }                                            
     }); 
     if (selectedtemp != null && selecteds.indexOf(selectedtemp.id) < 0) {
-        rcdata.push({
-                "key": selectedtemp["AMINO ACID"],
-                "values":[
-                {"axis": "DSSP", "value": radarChartScale(selectedtemp[" DSSP"], 0, 18)},
-                {"axis": "SASA", "value": radarChartScale(selectedtemp[" SASA"], 21, 36)},
-                {"axis": "GYRATE", "value": radarChartScale(selectedtemp[" GYRATE"], 0.7, 1.2)},                
-                {"axis": "ENERGY", "value": radarChartScale(selectedtemp[" ENERGY"], -83000, -76000)},
-                {"axis": "RMSF", "value": radarChartScale(selectedtemp[" RMSF"], 0.2, 0.4)}
-                ]        
-        });   
+        rcdata.push(createRadarLine(selectedtemp["AMINO ACID"], axesorder, selectedtemp));  
     }
     
     var displaylegend = false;
@@ -236,12 +237,15 @@ function parallelCoordinates(file_name) {
         .render() 
         .reorderable()
         .brushMode("1D-axes");  // enable brushing
-      
-      pc.dimensions()[' DSSP'].yscale.domain([0,18]);
-      pc.dimensions()[' SASA'].yscale.domain([21,36]);
-      pc.dimensions()[' GYRATE'].yscale.domain([0.7,1.2]);
-      pc.dimensions()[' ENERGY'].yscale.domain([-83000,-76000]);
-      pc.dimensions()[' RMSF'].yscale.domain([0.2,0.4]);   
+           
+      axesorder = pc.getOrderedDimensionKeys();
+      for (axis in axesorder) {
+        var key = axesorder[axis];
+        if (key in minValues && key in maxValues) {
+            pc.dimensions()[key].yscale.domain([minValues[key], maxValues[key]]);
+        }
+      }
+ 
       pc.updateAxes();     
              
       changeColor(sel_dim);
@@ -259,6 +263,12 @@ function parallelCoordinates(file_name) {
       pc.on("brush", function(d) {
         gridUpdate(d);
       });
+      
+      //console.log(pc.getOrderedDimensionKeys());
+      pc.on("axesreorder", function(d) {
+        axesorder = d;
+        updateRadarChart(data);
+      });
 
     d3.select("#timestep").on("change", function() {
 	    d3.select("#step").text(this.value);
@@ -273,6 +283,8 @@ function parallelCoordinates(file_name) {
 
   // setting up grid
   var column_keys = d3.keys(data[0]);
+  //var column_keys = axesorder;
+  //console.log(column_keys);
   var columns = column_keys.map(function(key,i) {
     return {
       id: key,

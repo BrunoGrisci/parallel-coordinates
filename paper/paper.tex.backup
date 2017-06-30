@@ -278,17 +278,22 @@ Proteins are polymers formed by a sequence of 20 different possible amino acids 
 \paragraph*{DSSP}
 %
 
-\paragraph*{SASA} Solvent-accessible surface area is the surface area of the protein that is accessible to the solvent.
+
+\paragraph*{SASA} Solvent-accessible surface area (SASA) is the surface area of the protein that is accessible to the solvent.
 %
 
-\paragraph*{GYRATE} The radius of gyration can be used as a measurement of the compactness of a protein structure. It describes the overall spread of the molecule and is calculated taking the root mean square distance of the atoms from their common centre of gravity.
+
+\paragraph*{GYRATE}
 %
+
 
 \paragraph*{ENERGY}
 %
 
-\paragraph*{RMSF} The root mean square fluctuation of atomic positions is the measure of the average distance between the atoms of the simulated protein and a well-defined average position. 
+
+\paragraph*{RMSF}
 %
+
 
 %==========================================
 \section{Technical background}

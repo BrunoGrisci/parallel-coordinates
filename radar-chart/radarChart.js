@@ -94,7 +94,8 @@ function RadarChart() {
       'gridCircle': { 'mouseover': null, 'mouseout': null, 'mouseclick': null },
       'axisLabel': { 'mouseover': null, 'mouseout': null, 'mouseclick': null },
       'line': { 'mouseover': null, 'mouseout': null, 'mouseclick': null },
-      'legend': { 'mouseover': legendMouseover, 'mouseout': areaMouseout, 'mouseclick': legendClick },
+      //'legend': { 'mouseover': legendMouseover, 'mouseout': areaMouseout, 'mouseclick': legendClick },
+      'legend': { 'mouseover': legendMouseover, 'mouseout': areaMouseout },
       'axisLegend': { 'mouseover': null, 'mouseout': null, 'mouseclick': null },
       'radarArea': { 'mouseover': areaMouseover, 'mouseout': areaMouseout, 'mouseclick': null },
       'radarInvisibleCircle': { 'mouseover': tooltip_show, 'mouseout': tooltip_hide, 'mouseclick': null }
@@ -974,12 +975,12 @@ function RadarChart() {
             });	
 	}
 
-   function legendClick(d, i, self) {
+   /*function legendClick(d, i, self) {
          var keys = _data.map(function(m) {return m.key});
          modifyList(options.areas.filter, keys[d], keys);
          legend_toggles[d] = legend_toggles[d] ? false : true;
          update();
-   }
+   }*/
 
    function tooltip_show(d, i, self) {
          if (legend_toggles[d._i]) return;
