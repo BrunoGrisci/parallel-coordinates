@@ -60,7 +60,7 @@ function RadarChart() {
          threshold: 90,    // radius threshold for hiding
          lineColor: "white",
          lineWidth: "2px",
-         fontWidth: "11px",
+         fontWidth: "20px",
          fontColor: "black",
          wrapWidth: 60,	      // The number of pixels after which a label needs to be given a new line
          filter: [],
@@ -975,12 +975,12 @@ function RadarChart() {
             });	
 	}
 
-   function legendClick(d, i, self) {
+   /*function legendClick(d, i, self) {
          var keys = _data.map(function(m) {return m.key});
          modifyList(options.areas.filter, keys[d], keys);
          legend_toggles[d] = legend_toggles[d] ? false : true;
          update();
-   }
+   }*/
 
    function tooltip_show(d, i, self) {
          if (legend_toggles[d._i]) return;

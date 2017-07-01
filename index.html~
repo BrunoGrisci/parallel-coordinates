@@ -91,7 +91,7 @@ var pc = d3.parcoords()("#example")
   .alpha(0.4);
 
 var rccolor = d3.scale.ordinal()
-    .range(["#CC333F", "#EDC951","#00A0B0", "#006400", "#FF00FF"]);
+    .range(["#CC333F", "#EDC951","#00A0B0", "#006400", "#FF00FF", "#D2691E"]);
 
 var rcmargin = {top: 100, right: 100, bottom: 100, left: 100},
 	width = Math.min(700, window.innerWidth - 10) - rcmargin.left - rcmargin.right,
@@ -106,11 +106,16 @@ var radarChartOptions = {
      maxValue: 1
   },
   areas: {
-     rounded: false
+     rounded: false,
+     sort: false
   },
-    legend: {
+  legend: {
      symbol: 'triangle-up', // 'circle', 'cross', 'diamond', 'triangle-up', 'triangle-down'
-    },
+  },
+  axes: {
+     fontWidth: "14px",
+     ranges: {}           // { axisname: [min, max], axisname: [min, max]  }
+  },
   color: rccolor
 };
 
@@ -119,6 +124,7 @@ d3.select('#radarChart')
     .call(radarChart);
 radarChart.options(radarChartOptions).update();
 
+var play = true;
 var axesorder = [];
 var selecteds = [];
 var selectedtemp = null;
@@ -126,8 +132,7 @@ var selected = false;
 var sel_dim = ' DSSP';
 var file_name = 'data/STEPS/30000.csv';
 
-var minValues = {" DSSP":0,  " SASA":21, " GYRATE":0.7, " ENERGY":-83000, " RMSF":0.2}; 
-var maxValues = {" DSSP":18, " SASA":36, " GYRATE":1.2, " ENERGY":-76000, " RMSF":0.4};
+var minMaxValues = {" DSSP":[0,18],  " SASA":[21,36], " GYRATE":[0.7,1.2], " ENERGY":[-83000,-76000], " RMSF":[0.2,0.4]}; 
 
 // update color
 function changeColor(dimension) {
@@ -179,7 +184,7 @@ function createRadarLine(key, dimensions, d) {
             var k = dimensions[dim];
             var value = {
                 "axis": dimensions[dim].replace(/\s+/g, ''),
-                "value": radarChartScale(d[k],minValues[k],maxValues[k])
+                "value": radarChartScale(d[k],minMaxValues[k][0],minMaxValues[k][1])
             };
             line.values.push(value);
         } 
@@ -241,8 +246,8 @@ function parallelCoordinates(file_name) {
       axesorder = pc.getOrderedDimensionKeys();
       for (axis in axesorder) {
         var key = axesorder[axis];
-        if (key in minValues && key in maxValues) {
-            pc.dimensions()[key].yscale.domain([minValues[key], maxValues[key]]);
+        if (key in minMaxValues) {
+            pc.dimensions()[key].yscale.domain([minMaxValues[key][0], minMaxValues[key][1]]);
         }
       }
  
@@ -389,6 +394,12 @@ function parallelCoordinates(file_name) {
   };
       
   });
+  
+/*  if (play) {
+    var sli = d3.select("#timestep");
+    console.log(sli);
+  }*/
+  
 }
 
 parallelCoordinates(file_name);
