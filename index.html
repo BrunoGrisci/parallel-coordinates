@@ -69,8 +69,12 @@ body, html {
 
 <!-- End Radar Chart -->
 
-<p>The current time step is <strong id="step">30000.0</strong><br/>
-<input type="range" min="30000" max="50000" value="30000.0" step="100.0" id="timestep" style="width:250px;"/>
+<div id="controllers">
+    <p>The current time step is <strong id="step">30000.0</strong><br/>
+    <input type="range" min="30000" max="50000" value="30000.0" step="100.0" id="timestep" style="width:250px;"/>
+    <button type="button" id="Play_Pause" >Play</button>
+    <button type="button" id="Rec_Pause" >Rec</button>
+</div>
 
 <div id="example" class="parcoords" style="height:250px;"></div>
 <div id="grid" style="width:560px;"></div>
@@ -124,7 +128,8 @@ d3.select('#radarChart')
     .call(radarChart);
 radarChart.options(radarChartOptions).update();
 
-//var play = true;
+var play = false;
+var rec  = false;
 var axesorder = [];
 var selecteds = [];
 var selectedtemp = null;
@@ -259,6 +264,8 @@ function parallelCoordinates(file_name) {
 
      pc.svg.selectAll(".dimension")
         .on("click", function(d) {
+            play = false;
+            rec  = false;
             changeColor(d);
             updateHighlights(data);
             })
@@ -266,18 +273,37 @@ function parallelCoordinates(file_name) {
 
       // update grid on brush
       pc.on("brush", function(d) {
+        play = false;
+        rec  = false;
         gridUpdate(d);
       });
       
       //console.log(pc.getOrderedDimensionKeys());
       pc.on("axesreorder", function(d) {
+        play = false;
+        rec  = false;
         axesorder = d;
         updateRadarChart(data);
       });
 
     d3.select("#timestep").on("change", function() {
+        play = false;
+        rec  = false;
 	    d3.select("#step").text(this.value);
-        parallelCoordinates('data/STEPS/' + this.value.toString() + '.csv');
+	    file_name = 'data/STEPS/' + this.value.toString() + '.csv'
+        parallelCoordinates(file_name);
+    });
+
+    d3.select("#Play_Pause").on("click", function() {
+        rec  = false;
+        play = !play;
+        parallelCoordinates(file_name);      
+    });
+    
+    d3.select("#Rec_Pause").on("click", function() {
+        play = false;
+        rec = !rec;
+        parallelCoordinates(file_name);      
     });
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -344,6 +370,8 @@ function parallelCoordinates(file_name) {
 
   grid.onClick.subscribe(function(e,args) {
      // Get row number from grid
+     play = false;
+     rec  = false;
      var grid_row = grid.getCellFromEvent(e).row;  
      grid.getColumns().forEach(function(col){//get all the columns
         grid.flashCell(grid_row, grid.getColumnIndex(col.id));//flash it
@@ -395,10 +423,32 @@ function parallelCoordinates(file_name) {
       
   });
   
-/*  if (play) {
-    var sli = d3.select("#timestep");
-    console.log(sli);
-  }*/
+  var v = document.getElementById("timestep").value;
+  var s = document.getElementById("timestep").step;
+  var m = document.getElementById("timestep").max;
+  var n = document.getElementById("timestep").min;
+  if (play && v + s <= m) {
+    setTimeout(function(){
+        document.getElementById("timestep").stepUp();
+        d3.select("#step").text(document.getElementById("timestep").value);
+        file_name = 'data/STEPS/' + document.getElementById("timestep").value.toString() + '.csv'
+        parallelCoordinates(file_name);
+    }, 100);
+  }
+  else {
+    play = false;
+  }
+  if (rec && v - s >= n) {
+    setTimeout(function(){
+        document.getElementById("timestep").stepDown();
+        d3.select("#step").text(document.getElementById("timestep").value);
+        file_name = 'data/STEPS/' + document.getElementById("timestep").value.toString() + '.csv'
+        parallelCoordinates(file_name);
+    }, 100);
+  }
+  else {
+    rec = false;
+  }
   
 }
 
