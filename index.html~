@@ -132,6 +132,7 @@ var play = false;
 var rec  = false;
 var axesorder = [];
 var selecteds = [];
+var inverteds = [];
 var selectedtemp = null;
 var selected = false;
 var sel_dim = ' DSSP';
@@ -187,9 +188,13 @@ function createRadarLine(key, dimensions, d) {
     for (dim in dimensions) {
         if (dimensions[dim] != "AMINO ACID") {
             var k = dimensions[dim];
+            var v = radarChartScale(d[k],minMaxValues[k][0],minMaxValues[k][1]);
+            if (inverteds.indexOf(dimensions[dim]) > -1) {
+                v = 1 - v;
+            }
             var value = {
                 "axis": dimensions[dim].replace(/\s+/g, ''),
-                "value": radarChartScale(d[k],minMaxValues[k][0],minMaxValues[k][1])
+                "value": v
             };
             line.values.push(value);
         } 
@@ -270,6 +275,20 @@ function parallelCoordinates(file_name) {
             updateHighlights(data);
             })
         .selectAll(".label");
+        
+     inverteds = [];
+     pc.svg.selectAll(".dimension")
+        .on("dblclick", function(d) {
+            console.log(d);
+            var i = inverteds.indexOf(d);
+            if (i > -1) {
+                inverteds.splice(i, 1);        
+            }
+            else {
+                inverteds.push(d);    
+            }
+            updateRadarChart(data);
+            });        
 
       // update grid on brush
       pc.on("brush", function(d) {
@@ -300,7 +319,7 @@ function parallelCoordinates(file_name) {
         parallelCoordinates(file_name);      
     });
     
-    d3.select("#Play_Pause").on("click", function() {
+    d3.select("#Rec_Pause").on("click", function() {
         play = false;
         rec = !rec;
         parallelCoordinates(file_name);      
