@@ -442,10 +442,10 @@ function parallelCoordinates(file_name) {
       
   });
   
-  var v = document.getElementById("timestep").value;
-  var s = document.getElementById("timestep").step;
-  var m = document.getElementById("timestep").max;
-  var n = document.getElementById("timestep").min;
+  var v = Number(document.getElementById("timestep").value);
+  var s = Number(document.getElementById("timestep").step);
+  var m = Number(document.getElementById("timestep").max);
+  var n = Number(document.getElementById("timestep").min);
   if (play && v + s <= m) {
     setTimeout(function(){
         document.getElementById("timestep").stepUp();
