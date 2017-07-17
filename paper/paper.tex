@@ -261,34 +261,37 @@ one or two words; separated by semicolon; from specific; to generic fields;
 
 Proteins are polymers formed by a sequence of 20 different possible amino acids that under physiological conditions fold into a precise shape known as its native state~\cite{anfinsen:1973}. Each amino acid has an alpha carbon (\texttt{CA}) with bonds to amino (\texttt{NH2}) and carboxyl (\texttt{COOH}) groups and a variable side-chain (\texttt{R}) that determines the particular physicochemical properties of each residue. A peptide is a molecule composed of two or more amino acids chained by a chemical bond called the \textit{peptide bond}. This bond is formed when the carboxyl group of one residue reacts with the amino group of the other residue, releasing a water molecule. The interaction between amino acids in a protein causes the polypeptide chain to fold, usually in a proper configuration, as \texttt{$\alpha$-helix}, \texttt{$\beta$-sheet}, \texttt{coil} or \texttt{turn}. These local folding patterns represent the secondary structure of a protein. The topology or fold is given by the succession of secondary structures connected in a \texttt{3D} space. The specific characteristics of the peptide bond have significant implications for the \texttt{3D} fold that can be adopted by polypeptides. The peptide bond (\texttt{C-N}) has a double bond, and it is not allowed rotation of the molecule around this bond. The rotation is only permitted around the bonds \texttt{N-C$\alpha$} and \texttt{C}$_{\alpha}$\texttt{-C}. The analysis of experimental protein structures (\texttt{X}-ray data) reveals that amino acid residues can assume many conformations in proteins~\cite{Borguesan:2015}. Each amino acid has a set of physiochemical properties which contributes to its intrinsic conformational preference~\cite{Mathura:2005}. Amino acids in a secondary structure usually adopt a particular set of backbone torsion angles~\cite{Borguesan:2015}.
 
+The amino acids sequence of a protein is directly related to its structure in three dimensional space, which is defining of the protein biological function. The change of only one amino acid in the chain is capable of great modification of the structure and function of a protein because of the differences in size and physical-chemical properties among amino acids~\cite{nelson2008lehninger}.
+
 \subsection{Related work}
 %
 
-%\subimages[htb]{Technique overview}{overview}{%
-%  \subimage[First step]{.31}{sibgrapi}%
-%  \subimage[Second step]{.31}{sibgrapi}%
-%  \subimage[Result]{.31}{sibgrapi}%
-%}
 
 %==========================================
 \section{Data characterization}
 
+The data for testing this visualization tool comes from the Kappa-conotoxin PVIIA, with amino acids sequence: $CRIPNQKCFQHLDDCCSRKCNRFNKCV$. Kappa-conotoxins are neurotoxical proteins extracted from sea slugs poison. They are inhibitors of the potassium channel and when injected in different organisms some alterations in their effect can be observed, from hyperactivity in fish to death when combined with other variants of conotoxins. The substitution of the asparagine ($N$) in the fifth position in the amino acids chain of the Kappa-conotoxin PVIIA by an alanine ($A$) is know to cause a reduction of 100\% in the toxicity of this protein~\cite{jacobsen2000single}~\cite{mir2016conotoxins}~\cite{akey2002inherited}.
+
+For this study, this asparagine was changed by all possible 20 amino acids, and for each resulting structure a molecular dynamics simulation was performed in order to evaluate its behavior during a predetermined period of time under chosen conditions. The simulations were performed with GROMACS~\cite{hess2008gromacs}, a software for biomolecules simulation, with the simulated time of 50ns. These simulations mimic the behavior of biomolecules in a solvent under controled temperature. From the data created versus time, the following attributes were studied.
+
 \subsection{Data dimensions}
 
-\paragraph*{DSSP}
+\paragraph*{DSSP} Analysis of the secondary structure of the protein for each frame of the simulation. The secondary structure is a local structural conformation of a region in the amino acids sequence which follows specific patterns that, once folded, will originate the three dimensional functional structure of the protein. 
 %
 
-\paragraph*{SASA} Solvent-accessible surface area is the surface area of the protein that is accessible to the solvent.
+\paragraph*{SASA} Solvent-accessible surface area is the surface area of the protein that is accessible to the solvent. By analysing the area exposed to the solvent, i.e., what is around the protein, it is possible to infer how denatured is the protein, so the greater the SASA value, the greater the denaturation.
 %
 
-\paragraph*{GYRATE} The radius of gyration can be used as a measurement of the compactness of a protein structure. It describes the overall spread of the molecule and is calculated taking the root mean square distance of the atoms from their common centre of gravity.
+\paragraph*{GYRATE} The radius of gyration can be used as a measurement of the compactness of a protein structure. It describes the overall spread of the molecule and is calculated taking the root mean square distance of the atoms from their common centre of gravity. Greater values of radius of gyration means a less compact protein.
 %
 
-\paragraph*{ENERGY}
+\paragraph*{ENERGY} This attribute measures the total energy of the system. The energy is a stability indicator, usually comparable, in which systems with less energy will be more stable (less entropy).
 %
 
 \paragraph*{RMSF} The root mean square fluctuation of atomic positions is the measure of the average distance between the atoms of the simulated protein and a well-defined average position. 
 %
+
+All the dimensions are continuous numerical values. As can be seen, the data of a single simulation is multidimensional and changes over the simulated time.
 
 %==========================================
 \section{Technical background}

@@ -35,4 +35,33 @@ B.~Borguesan, M.~Barbachan~e Silva, B.~Grisci, M.~Inostroza-Ponta, and M.~Dorn,
 V.~Mathura and D.~Kolippakkam, ``Apdbase: Amino acid physico­chemical
   properties database,'' \emph{Bioinformation}, vol.~1, no.~1, pp. 2--4, 2005.
 
+\bibitem{nelson2008lehninger}
+D.~L. Nelson, A.~L. Lehninger, and M.~M. Cox, \emph{Lehninger principles of
+  biochemistry}.\hskip 1em plus 0.5em minus 0.4em\relax Macmillan, 2008.
+
+\bibitem{jacobsen2000single}
+R.~B. Jacobsen, E.~D. Koch, B.~Lange-Malecki, M.~Stocker, J.~Verhey, R.~M.
+  Van~Wagoner, A.~Vyazovkina, B.~M. Olivera, and H.~Terlau, ``Single amino acid
+  substitutions in $\kappa$-conotoxin pviia disrupt interaction with the shaker
+  k+ channel,'' \emph{Journal of Biological Chemistry}, vol. 275, no.~32, pp.
+  24\,639--24\,644, 2000.
+
+\bibitem{mir2016conotoxins}
+R.~Mir, S.~Karim, M.~Amjad~Kamal, C.~M~Wilson, and Z.~Mirza, ``Conotoxins:
+  structure, therapeutic potential and pharmacological applications,''
+  \emph{Current pharmaceutical design}, vol.~22, no.~5, pp. 582--589, 2016.
+
+\bibitem{akey2002inherited}
+D.~T. Akey, X.~Zhu, M.~Dyer, A.~Li, A.~Sorensen, S.~Blackshaw,
+  T.~Fukuda-Kamitani, S.~P. Daiger, C.~M. Craft, T.~Kamitani \emph{et~al.},
+  ``The inherited blindness associated protein aipl1 interacts with the cell
+  cycle regulator protein nub1,'' \emph{Human molecular genetics}, vol.~11,
+  no.~22, pp. 2723--2733, 2002.
+
+\bibitem{hess2008gromacs}
+B.~Hess, C.~Kutzner, D.~Van Der~Spoel, and E.~Lindahl, ``Gromacs 4: algorithms
+  for highly efficient, load-balanced, and scalable molecular simulation,''
+  \emph{Journal of chemical theory and computation}, vol.~4, no.~3, pp.
+  435--447, 2008.
+
 \end{thebibliography}
