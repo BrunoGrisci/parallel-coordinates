@@ -8,7 +8,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: my.bib
-I was expecting a `,' or a `}'---line 520 of file my.bib
+I was expecting a `,' or a `}'---line 553 of file my.bib
  : 
  : PAGES = "W500-2"}
 (Error may have been on previous line)
@@ -18,45 +18,45 @@ I'm skipping whatever remains of this entry
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 13 entries,
+You've used 16 entries,
             4039 wiz_defined-function locations,
-            903 strings with 10057 characters,
-and the built_in function-call counts, 11650 in all, are:
-= -- 967
-> -- 301
-< -- 120
-+ -- 174
-- -- 57
-* -- 591
-:= -- 1727
-add.period$ -- 26
-call.type$ -- 13
-change.case$ -- 12
-chr.to.int$ -- 261
-cite$ -- 13
-duplicate$ -- 800
-empty$ -- 824
-format.name$ -- 62
-if$ -- 2668
+            926 strings with 10983 characters,
+and the built_in function-call counts, 14826 in all, are:
+= -- 1225
+> -- 404
+< -- 154
++ -- 231
+- -- 76
+* -- 752
+:= -- 2175
+add.period$ -- 32
+call.type$ -- 16
+change.case$ -- 15
+chr.to.int$ -- 336
+cite$ -- 16
+duplicate$ -- 1014
+empty$ -- 1038
+format.name$ -- 84
+if$ -- 3403
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 136
-newline$ -- 62
-num.names$ -- 13
-pop$ -- 274
+int.to.str$ -- 16
+missing$ -- 176
+newline$ -- 71
+num.names$ -- 16
+pop$ -- 357
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 893
+skip$ -- 1134
 stack$ -- 0
-substring$ -- 637
-swap$ -- 725
-text.length$ -- 33
+substring$ -- 814
+swap$ -- 927
+text.length$ -- 42
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 13
+type$ -- 16
 warning$ -- 0
-while$ -- 54
-width$ -- 15
-write$ -- 158
+while$ -- 69
+width$ -- 18
+write$ -- 191
 (There was 1 error message)

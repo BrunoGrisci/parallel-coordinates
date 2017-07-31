@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.9)  31 JUL 2017 13:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.9)  31 JUL 2017 18:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -421,7 +421,7 @@ LaTeX Info: Redefining \nameref on input line 177.
 \@outlinefile=\write3
 \openout3 = `paper.out'.
 
- <figs/all.png, id=73, 1810.765pt x 905.3825pt>
+ <figs/all.png, id=77, 1810.765pt x 905.3825pt>
 File: figs/all.png Graphic file (type png)
 
 <use figs/all.png>
@@ -431,7 +431,10 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 235.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 235.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 262.
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no ™ in font ptmr7t!
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 264.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -442,43 +445,69 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
  <./figs/all.png>]
-<figs/grid.png, id=106, 574.145pt x 545.03625pt>
+<figs/grid.png, id=113, 574.145pt x 545.03625pt>
 File: figs/grid.png Graphic file (type png)
  <use figs/grid.png>
-Package pdftex.def Info: figs/grid.png used on input line 317.
+Package pdftex.def Info: figs/grid.png used on input line 319.
 (pdftex.def)             Requested size: 226.79846pt x 215.29944pt.
-
-<figs/brush.png, id=107, 1817.79124pt x 419.5675pt>
+ [2 <./figs/grid.png>] <figs/brush.png, id=138, 1817.79124pt x 419.5675pt>
 File: figs/brush.png Graphic file (type png)
- <use figs/brush.png>
-Package pdftex.def Info: figs/brush.png used on input line 329.
-(pdftex.def)             Requested size: 252.0pt x 58.16286pt.
 
-[2 <./figs/grid.png>] <figs/dssp.png, id=135, 1615.03375pt x 258.9675pt>
+<use figs/brush.png>
+Package pdftex.def Info: figs/brush.png used on input line 331.
+(pdftex.def)             Requested size: 252.0pt x 58.16286pt.
+ <figs/dssp.png, id=142, 1615.03375pt x 258.9675pt>
 File: figs/dssp.png Graphic file (type png)
 
 <use figs/dssp.png>
-Package pdftex.def Info: figs/dssp.png used on input line 339.
+Package pdftex.def Info: figs/dssp.png used on input line 341.
 (pdftex.def)             Requested size: 252.0pt x 40.40428pt.
- <figs/gyrate.png, id=136, 1591.9475pt x 256.96pt>
+ <figs/gyrate.png, id=143, 1591.9475pt x 256.96pt>
 File: figs/gyrate.png Graphic file (type png)
 
 <use figs/gyrate.png>
-Package pdftex.def Info: figs/gyrate.png used on input line 345.
+Package pdftex.def Info: figs/gyrate.png used on input line 347.
 (pdftex.def)             Requested size: 252.0pt x 40.6753pt.
- <figs/radar.png, id=137, 600.2425pt x 540.0175pt>
+ <figs/radar.png, id=145, 600.2425pt x 540.0175pt>
 File: figs/radar.png Graphic file (type png)
 
 <use figs/radar.png>
-Package pdftex.def Info: figs/radar.png used on input line 352.
+Package pdftex.def Info: figs/radar.png used on input line 357.
 (pdftex.def)             Requested size: 201.60077pt x 181.37048pt.
- (./paper.bbl
+ <figs/slider.png, id=147, 402.50375pt x 58.2175pt>
+File: figs/slider.png Graphic file (type png)
+
+<use figs/slider.png>
+Package pdftex.def Info: figs/slider.png used on input line 368.
+(pdftex.def)             Requested size: 201.60077pt x 29.1593pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--380
+[]\OT1/ptm/m/n/10 The radar plot was build from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--380
+\OT1/ptm/m/n/10 the im-ple-men-ta-tions of Nadieh Bre-mer
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--380
+\OT1/ptm/m/n/10 (https://www.visualcinnamon.com/2015/10/different-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--380
+\OT1/ptm/m/n/10 look-d3-radar-chart.html) and Micah Stubbs
+ []
+
+(./paper.bbl [3 <./figs/brush.png> <./figs/dssp.png> <./figs/gyrate.png> <./fig
+s/radar.png> <./figs/slider.png>]
 Missing character: There is no Â in font ptmr7t!
 Missing character: There is no ­ in font ptmr7t!
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 45.
+(Font)              <8> on input line 63.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 45.
+(Font)              <6> on input line 63.
 )
 
 ** Conference Paper **
@@ -491,28 +520,26 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 402.
-[3 <./figs/brush.png> <./figs/dssp.png> <./figs/gyrate.png> <./figs/radar.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 402.
-(./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 402.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 402.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 422.
+[4
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 422.
+ (./paper.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 422.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 422.
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 73C5F7D6861581AC2DDB6B8F183DDC19;970.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 402.
+(rerunfilecheck)             Checksum: A62C835D5D64A0955D368541DE920973;1017.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 422.
  ) 
 Here is how much of TeX's memory you used:
- 7384 strings out of 493304
- 112712 string characters out of 6139871
- 206645 words of memory out of 5000000
- 10714 multiletter control sequences out of 15000+600000
+ 7402 strings out of 493304
+ 113008 string characters out of 6139871
+ 205870 words of memory out of 5000000
+ 10725 multiletter control sequences out of 15000+600000
  35403 words of font info for 70 fonts, out of 8000000 for 9000
  960 hyphenation exceptions out of 8191
- 43i,8n,40p,1945b,346s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,8n,40p,1945b,462s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
@@ -521,10 +548,10 @@ ype1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
 s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (3 pages, 723669 bytes).
+Output written on paper.pdf (4 pages, 731458 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
- 171 compressed objects within 2 object streams
- 53 named destinations out of 1000 (max. 500000)
- 167 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 212 PDF objects out of 1000 (max. 8388607)
+ 188 compressed objects within 2 object streams
+ 59 named destinations out of 1000 (max. 500000)
+ 180 words of extra memory for PDF output out of 10000 (max. 10000000)
 

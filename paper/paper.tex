@@ -259,6 +259,8 @@ one or two words; separated by semicolon; from specific; to generic fields;
 \section{Introduction}
 %
 
+In a molecular dynamics simulation, many features can be measured, depending on the researcher’s interests. One of the mainstays of simulation analysis is the inspection of trajectory convergence, an indication of simulation stability~\cite{grossfield2007convergence}. It is, however, well known that convergence is a subjective matter, and that the evaluation of single structural features (such as RMSD) for this purpose is very unreliable~\cite{knapp2011intuitive}~\cite{van2006biomolecular}. Thus, the simultaneous evaluation of multiple structural analysis via a simple visual tool, as the one presented here, is of great utility to the field of macromolecular simulation.
+
 Proteins are polymers formed by a sequence of 20 different possible amino acids that under physiological conditions fold into a precise shape known as its native state~\cite{anfinsen:1973}. Each amino acid has an alpha carbon (\texttt{CA}) with bonds to amino (\texttt{NH2}) and carboxyl (\texttt{COOH}) groups and a variable side-chain (\texttt{R}) that determines the particular physicochemical properties of each residue. A peptide is a molecule composed of two or more amino acids chained by a chemical bond called the \textit{peptide bond}. This bond is formed when the carboxyl group of one residue reacts with the amino group of the other residue, releasing a water molecule. The interaction between amino acids in a protein causes the polypeptide chain to fold, usually in a proper configuration, as \texttt{$\alpha$-helix}, \texttt{$\beta$-sheet}, \texttt{coil} or \texttt{turn}. These local folding patterns represent the secondary structure of a protein. The topology or fold is given by the succession of secondary structures connected in a \texttt{3D} space. The specific characteristics of the peptide bond have significant implications for the \texttt{3D} fold that can be adopted by polypeptides. The peptide bond (\texttt{C-N}) has a double bond, and it is not allowed rotation of the molecule around this bond. The rotation is only permitted around the bonds \texttt{N-C$\alpha$} and \texttt{C}$_{\alpha}$\texttt{-C}. The analysis of experimental protein structures (\texttt{X}-ray data) reveals that amino acid residues can assume many conformations in proteins~\cite{Borguesan:2015}. Each amino acid has a set of physiochemical properties which contributes to its intrinsic conformational preference~\cite{Mathura:2005}. Amino acids in a secondary structure usually adopt a particular set of backbone torsion angles~\cite{Borguesan:2015}.
 
 The amino acids sequence of a protein is directly related to its structure in three dimensional space, which is defining of the protein biological function. The change of only one amino acid in the chain is capable of great modification of the structure and function of a protein because of the differences in size and physical-chemical properties among amino acids~\cite{nelson2008lehninger}.
@@ -307,7 +309,7 @@ All the dimensions are continuous numerical values. As can be seen, the data of 
 \section{Technique overview}
 %
 
-The proposed visualization technique takes advantage of the use of three different visualization tools working in synchrony, and the capability of changing the data over time.
+The proposed visualization technique takes advantage of the use of three different visualization tools working in synchrony, and the capability of changing the data over time. The parallel coordinates and radar plot data is normalized in the range of minimum and maximum values for each dimension along all timesteps.
 
 \subsection{Grid}
 
@@ -319,21 +321,21 @@ The grid is an interactive table where the raw values of the data are displayed 
 \label{fig:grid}
 \end{figure}
 \paragraph*{Item highlighting} When hoving the mouse over a line in the grid, that line is highlited. This operation also reflects on the other plots.
-\paragraph*{Item selection} When right-clicking on a line of the grid with the mouse that line is selected and the item is fixed on the plots.
+\paragraph*{Item selection} When right-clicking on a line of the grid with the mouse that line is selected and the item is fixed on the plots. The selected line is becomes darker on the parallel coordinates plot.
 
 \subsection{Parallel Coordinates}
 
-The parallel coordinates plot is used to show a global view of the data, displaying all the itens in a given time at once.
+The parallel coordinates plot is used to show a global view of the data, displaying all the itens in a given time at once and allowing the user to view the general "shape" of the simulations.
 
 \begin{figure}
 \includegraphics[width=1.0\linewidth]{figs/brush.png}
 \caption{Example of use of the brush.} 
 \label{fig:brush}
 \end{figure}
-\paragraph*{Axis brushing} The brush is the filtering operation of the parallel coordinates and can be seen in Fig.~\ref{fig:brush}. Draging the mouse along an axis select the itens in that range. This change is reflected on the grid.
+\paragraph*{Axis brushing} The brush is the filtering operation of the parallel coordinates and can be seen in Fig.~\ref{fig:brush}. Draging the mouse along an axis select the items in that range. This change is reflected on the grid.
 \paragraph*{Axis sorting} When double clicking an axis the order of its values is inverted. This change is reflected on the radar plot.
 \paragraph*{Axis reordering} When right-clicking an axis and draging it to left or right the axes are reordered. This change is reflected on the radar plot.
-\paragraph*{Recoloring by axis selection} The color of the lines of the parallel coordinates is defined by the range of the selected axis. Clicking an axis change the dimension used for coloring. Figures~\ref{fig:dssp} and~\ref{fig:gyrate} show the colors for two different dimensions.
+\paragraph*{Recoloring by axis selection} The color of the lines of the parallel coordinates is defined by the range of the selected axis. Clicking an axis change the dimension used for coloring. Figures~\ref{fig:dssp} and~\ref{fig:gyrate} show the colors for two different dimensions. This function is useful when analysing one dimension while wanting to keep in mind the behavior of another.
 
 \begin{figure}
 \includegraphics[width=1.0\linewidth]{figs/dssp.png}
@@ -348,15 +350,33 @@ The parallel coordinates plot is used to show a global view of the data, display
 \end{figure}
 
 \subsection{Radar Plot}
+
+The objective of the radar plot, showed in Fig.~\ref{fig:radar}, is to visualize and compare specif items of the data, i.e., single simulations. The hypothesis is that overlaping the shapes of the lines from the parallel coordinates in a radial way makes it easier com see the similarities and differences between a small number of items, while the global view is better represented by the parallel coordinates plot since for many shapes the radar plot becomes convoluted.  
+
 \begin{figure}
 \includegraphics[width=0.8\linewidth]{figs/radar.png}
 \caption{Example of one simulation being visualized in the radar plot.} 
 \label{fig:radar}
 \end{figure}
-\paragraph*{Item highlighting}
+\paragraph*{Item highlighting} When hoving the mouse over a shape in the radar plot or its label, the shape is filled in order to be higlighted.
 
 \subsection{Slider}
 
+The slider is the element that allows the user to change the data being visualized over time (Fig~\ref{fig:slider}). It can be clicked or dragged, then selecting a specific time step of the simulation, and the plots and grid will be updated. It is also possible to visualize the changes in time with animations. For this there are two buttons, "Play" and "Rec", that update the data automatically untill the end of the timesteps. Interacting with any other element of the visualization pauses the animation. A text box informs the current timestep.
+
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{figs/slider.png}
+\caption{View of the elements of the slider, that enables the change of timesteps.} 
+\label{fig:slider}
+\end{figure}
+
+%==========================================
+\section{Experiments}
+%
+
+All elements of this visualization tool were implemented using JavaScript, HTML and CSS, with the visualization library D3.js. The parallel coordinates plot uses the visual toolkit for multidimensional detectives Parallel Coordinates (0.7.0) (syntagmatic.github.io/parallel-coordinates). 
+
+The radar plot was build from the implementations of Nadieh Bremer (https://www.visualcinnamon.com/2015/10/different-look-d3-radar-chart.html) and Micah Stubbs (https://bl.ocks.org/micahstubbs/a772306d6fd49874ec92). 
 
 %==========================================
 \section{Results and Discussion}

@@ -21,6 +21,24 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{grossfield2007convergence}
+A.~Grossfield, S.~E. Feller, and M.~C. Pitman, ``Convergence of molecular
+  dynamics simulations of membrane proteins,'' \emph{Proteins: structure,
+  function, and bioinformatics}, vol.~67, no.~1, pp. 31--40, 2007.
+
+\bibitem{knapp2011intuitive}
+B.~Knapp, S.~Frantal, M.~Cibena, W.~Schreiner, and P.~Bauer, ``Is an intuitive
+  convergence definition of molecular dynamics simulations solely based on the
+  root mean square deviation possible?'' \emph{Journal of Computational
+  Biology}, vol.~18, no.~8, pp. 997--1005, 2011.
+
+\bibitem{van2006biomolecular}
+W.~F. van Gunsteren, D.~Bakowies, R.~Baron, I.~Chandrasekhar, M.~Christen,
+  X.~Daura, P.~Gee, D.~P. Geerke, A.~Gl{\"a}ttli, P.~H. H{\"u}nenberger
+  \emph{et~al.}, ``Biomolecular modeling: goals, problems, perspectives,''
+  \emph{Angewandte Chemie International Edition}, vol.~45, no.~25, pp.
+  4064--4092, 2006.
+
 \bibitem{anfinsen:1973}
 C.~Anfinsen, ``Principles that govern the folding of protein chains,''
   \emph{Science}, vol. 181, no.~96, pp. 223--230, 1973.
