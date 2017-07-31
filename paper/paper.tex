@@ -276,19 +276,19 @@ For this study, this asparagine was changed by all possible 20 amino acids, and 
 
 \subsection{Data dimensions}
 
-\paragraph*{DSSP} Analysis of the secondary structure of the protein for each frame of the simulation. The secondary structure is a local structural conformation of a region in the amino acids sequence which follows specific patterns that, once folded, will originate the three dimensional functional structure of the protein. 
+\paragraph*{DSSP} Analysis of the secondary structure of the protein for each frame of the simulation. The secondary structure is a local structural conformation of a region in the amino acids sequence which follows specific patterns that, once folded, will originate the three dimensional functional structure of the protein~\cite{kabsch1983dictionary}. 
 %
 
-\paragraph*{SASA} Solvent-accessible surface area is the surface area of the protein that is accessible to the solvent. By analysing the area exposed to the solvent, i.e., what is around the protein, it is possible to infer how denatured is the protein, so the greater the SASA value, the greater the denaturation.
+\paragraph*{SASA} Solvent-accessible surface area is the surface area of the protein that is accessible to the solvent. By analysing the area exposed to the solvent, i.e., what is around the protein, it is possible to infer how denatured is the protein, so the greater the SASA value, the greater the denaturation~\cite{richmond1984solvent}.
 %
 
-\paragraph*{GYRATE} The radius of gyration can be used as a measurement of the compactness of a protein structure. It describes the overall spread of the molecule and is calculated taking the root mean square distance of the atoms from their common centre of gravity. Greater values of radius of gyration means a less compact protein.
+\paragraph*{GYRATE} The radius of gyration can be used as a measurement of the compactness of a protein structure. It describes the overall spread of the molecule and is calculated taking the root mean square distance of the atoms from their common centre of gravity. Greater values of radius of gyration means a less compact protein~\cite{lobanov2008radius}.
 %
 
-\paragraph*{ENERGY} This attribute measures the total energy of the system. The energy is a stability indicator, usually comparable, in which systems with less energy will be more stable (less entropy).
+\paragraph*{ENERGY} This attribute measures the total energy of the system. The energy is a stability indicator, usually comparable, in which systems with less energy will be more stable (less entropy)~\cite{van1998gromos}.
 %
 
-\paragraph*{RMSF} The root mean square fluctuation of atomic positions is the measure of the average distance between the atoms of the simulated protein and a well-defined average position. 
+\paragraph*{RMSF} The root mean square fluctuation of atomic positions is the measure of the average distance between the atoms of the simulated protein and a well-defined average position~\cite{maiorov1994significance}. 
 %
 
 All the dimensions are continuous numerical values. As can be seen, the data of a single simulation is multidimensional and changes over the simulated time.
@@ -297,44 +297,65 @@ All the dimensions are continuous numerical values. As can be seen, the data of 
 \section{Technical background}
 %
 
+\subsection{Grid}
+
+\subsection{Parallel Coordinates}
+
+\subsection{Radar Plot}
+
 %------------------------------------------------------------------------- 
 \section{Technique overview}
 %
 
+The proposed visualization technique takes advantage of the use of three different visualization tools working in synchrony, and the capability of changing the data over time.
+
 \subsection{Grid}
+
+The grid is an interactive table where the raw values of the data are displayed as in Fig.~\ref{fig:grid}. Its function is to provide a place where the data can be observed with more detail for scientific purposes.
+
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{figs/grid.png}
+\includegraphics[width=0.9\linewidth]{figs/grid.png}
 \caption{Overview of the used grid.} 
 \label{fig:grid}
 \end{figure}
-\paragraph*{Item highlighting}
-\paragraph*{Item selection}
+\paragraph*{Item highlighting} When hoving the mouse over a line in the grid, that line is highlited. This operation also reflects on the other plots.
+\paragraph*{Item selection} When right-clicking on a line of the grid with the mouse that line is selected and the item is fixed on the plots.
 
 \subsection{Parallel Coordinates}
+
+The parallel coordinates plot is used to show a global view of the data, displaying all the itens in a given time at once.
+
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{figs/brush.png}
-\caption{Example of the use of brush.} 
+\includegraphics[width=1.0\linewidth]{figs/brush.png}
+\caption{Example of use of the brush.} 
 \label{fig:brush}
 \end{figure}
-\paragraph*{Axis brushing} Fig.~\ref{fig:brush}
+\paragraph*{Axis brushing} The brush is the filtering operation of the parallel coordinates and can be seen in Fig.~\ref{fig:brush}. Draging the mouse along an axis select the itens in that range. This change is reflected on the grid.
+\paragraph*{Axis sorting} When double clicking an axis the order of its values is inverted. This change is reflected on the radar plot.
+\paragraph*{Axis reordering} When right-clicking an axis and draging it to left or right the axes are reordered. This change is reflected on the radar plot.
+\paragraph*{Recoloring by axis selection} The color of the lines of the parallel coordinates is defined by the range of the selected axis. Clicking an axis change the dimension used for coloring. Figures~\ref{fig:dssp} and~\ref{fig:gyrate} show the colors for two different dimensions.
 
-\paragraph*{Axis sorting}
-\paragraph*{Axis reordering}
-\paragraph*{Recoloring by axis selection}
+\begin{figure}
+\includegraphics[width=1.0\linewidth]{figs/dssp.png}
+\caption{Colors of the parallel coordinates for the DSSP dimension.} 
+\label{fig:dssp}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1.0\linewidth]{figs/gyrate.png}
+\caption{Colors of the parallel coordinates for the GYRATE dimension.} 
+\label{fig:gyrate}
+\end{figure}
 
 \subsection{Radar Plot}
 \begin{figure}
 \includegraphics[width=0.8\linewidth]{figs/radar.png}
-\caption{Example of one amino acid being visualized in the radar plot.} 
+\caption{Example of one simulation being visualized in the radar plot.} 
 \label{fig:radar}
 \end{figure}
 \paragraph*{Item highlighting}
 
 \subsection{Slider}
-
-%==========================================
-\section{Experiments}
-%
 
 
 %==========================================
