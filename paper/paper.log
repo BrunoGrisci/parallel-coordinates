@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.9)  1 AUG 2017 12:29
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.9)  1 AUG 2017 15:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -439,152 +439,148 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 264.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
+<figs/Amino_Acids.png, id=80, 1003.75pt x 1298.8525pt>
+File: figs/Amino_Acids.png Graphic file (type png)
+
+<use figs/Amino_Acids.png>
+Package pdftex.def Info: figs/Amino_Acids.png used on input line 267.
+(pdftex.def)             Requested size: 201.60077pt x 260.85593pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./figs/all.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 275--276
+Underfull \hbox (badness 10000) in paragraph at lines 285--286
 \OML/cmm/m/it/10 CRIPNQKCFQHLDDCCSRKCNRFNKCV$\OT1/ptm/m/n/10 . Its
  []
 
-<figs/pviia.png, id=103, 466.74374pt x 516.93124pt>
+<figs/pviia.png, id=107, 466.74374pt x 516.93124pt>
 File: figs/pviia.png Graphic file (type png)
  <use figs/pviia.png>
-Package pdftex.def Info: figs/pviia.png used on input line 278.
+Package pdftex.def Info: figs/pviia.png used on input line 288.
 (pdftex.def)             Requested size: 176.39923pt x 195.36317pt.
 
-<figs/grid.png, id=111, 574.145pt x 545.03625pt>
+[2 <./figs/Amino_Acids.png> <./figs/pviia.png>]
+<figs/grid.png, id=137, 574.145pt x 545.03625pt>
 File: figs/grid.png Graphic file (type png)
  <use figs/grid.png>
-Package pdftex.def Info: figs/grid.png used on input line 325.
+Package pdftex.def Info: figs/grid.png used on input line 335.
 (pdftex.def)             Requested size: 226.79846pt x 215.29944pt.
- [2 <./figs/pviia.png>] <figs/brush.png, id=137, 1817.79124pt x 419.5675pt>
+
+<figs/brush.png, id=138, 1817.79124pt x 419.5675pt>
 File: figs/brush.png Graphic file (type png)
-
-<use figs/brush.png>
-Package pdftex.def Info: figs/brush.png used on input line 337.
+ <use figs/brush.png>
+Package pdftex.def Info: figs/brush.png used on input line 347.
 (pdftex.def)             Requested size: 252.0pt x 58.16286pt.
- <figs/dssp.png, id=141, 1615.03375pt x 258.9675pt>
+
+<figs/dssp.png, id=142, 1615.03375pt x 258.9675pt>
 File: figs/dssp.png Graphic file (type png)
-
-<use figs/dssp.png>
-Package pdftex.def Info: figs/dssp.png used on input line 347.
+ <use figs/dssp.png>
+Package pdftex.def Info: figs/dssp.png used on input line 357.
 (pdftex.def)             Requested size: 252.0pt x 40.40428pt.
- <figs/gyrate.png, id=142, 1591.9475pt x 256.96pt>
+
+<figs/gyrate.png, id=143, 1591.9475pt x 256.96pt>
 File: figs/gyrate.png Graphic file (type png)
-
-<use figs/gyrate.png>
-Package pdftex.def Info: figs/gyrate.png used on input line 353.
+ <use figs/gyrate.png>
+Package pdftex.def Info: figs/gyrate.png used on input line 363.
 (pdftex.def)             Requested size: 252.0pt x 40.6753pt.
- <figs/radar.png, id=144, 600.2425pt x 540.0175pt>
+
+<figs/radar.png, id=145, 600.2425pt x 540.0175pt>
 File: figs/radar.png Graphic file (type png)
-
-<use figs/radar.png>
-Package pdftex.def Info: figs/radar.png used on input line 363.
+ <use figs/radar.png>
+Package pdftex.def Info: figs/radar.png used on input line 373.
 (pdftex.def)             Requested size: 201.60077pt x 181.37048pt.
- <figs/slider.png, id=146, 402.50375pt x 58.2175pt>
+ [3 <./figs/grid.png> <./figs/brush.png> <./figs/dssp.png> <./figs/gyrate.png>]
+
+<figs/slider.png, id=166, 402.50375pt x 58.2175pt>
 File: figs/slider.png Graphic file (type png)
-
-<use figs/slider.png>
-Package pdftex.def Info: figs/slider.png used on input line 374.
+ <use figs/slider.png>
+Package pdftex.def Info: figs/slider.png used on input line 384.
 (pdftex.def)             Requested size: 201.60077pt x 29.1593pt.
- [3 <./figs/grid.png> <./figs/brush.png> <./figs/dssp.png> <./figs/gyrate.png> 
-<./figs/radar.png>]
-Underfull \hbox (badness 2753) in paragraph at lines 385--386
-[]\OT1/ptm/m/n/10 The radar plot was build from the im-ple-men-ta-tions
+
+Underfull \hbox (badness 7047) in paragraph at lines 395--396
+[]\OT1/ptm/m/n/10 The radar chart was build from the im-ple-men-ta-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 385--386
-\OT1/ptm/m/n/10 of Nadieh Bre-mer ([]$http : / / visualcinnamon . com / 2015 / 
-10 /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 385--386
-\OT1/ptm/m/n/10 dierent-[]look-[]d3-[]radar-[]chart . html$[]) and Micah Stubb
-s
- []
-
-<figs/alaasn30000.png, id=167, 563.10374pt x 516.93124pt>
+<figs/alaasn30000.png, id=171, 563.10374pt x 516.93124pt>
 File: figs/alaasn30000.png Graphic file (type png)
 
 <use figs/alaasn30000.png>
-Package pdftex.def Info: figs/alaasn30000.png used on input line 396.
+Package pdftex.def Info: figs/alaasn30000.png used on input line 406.
 (pdftex.def)             Requested size: 120.95892pt x 111.0355pt.
 
-<figs/alaasn40000.png, id=168, 555.07375pt x 506.89375pt>
+<figs/alaasn40000.png, id=172, 555.07375pt x 506.89375pt>
 File: figs/alaasn40000.png Graphic file (type png)
 
 <use figs/alaasn40000.png>
-Package pdftex.def Info: figs/alaasn40000.png used on input line 396.
+Package pdftex.def Info: figs/alaasn40000.png used on input line 406.
 (pdftex.def)             Requested size: 120.95892pt x 110.45734pt.
 
-<figs/alaasn50000.png, id=169, 553.06625pt x 505.89pt>
+<figs/alaasn50000.png, id=173, 553.06625pt x 505.89pt>
 File: figs/alaasn50000.png Graphic file (type png)
 
 <use figs/alaasn50000.png>
-Package pdftex.def Info: figs/alaasn50000.png used on input line 396.
+Package pdftex.def Info: figs/alaasn50000.png used on input line 406.
 (pdftex.def)             Requested size: 120.95892pt x 110.64pt.
 
-<figs/asnglypro30000.png, id=170, 557.08125pt x 510.90875pt>
+<figs/asnglypro30000.png, id=175, 557.08125pt x 510.90875pt>
 File: figs/asnglypro30000.png Graphic file (type png)
 
 <use figs/asnglypro30000.png>
-Package pdftex.def Info: figs/asnglypro30000.png used on input line 403.
+Package pdftex.def Info: figs/asnglypro30000.png used on input line 415.
 (pdftex.def)             Requested size: 120.95892pt x 110.92685pt.
 
-<figs/asnglypro40000.png, id=171, 556.0775pt x 507.8975pt>
+<figs/asnglypro40000.png, id=176, 556.0775pt x 507.8975pt>
 File: figs/asnglypro40000.png Graphic file (type png)
 
 <use figs/asnglypro40000.png>
-Package pdftex.def Info: figs/asnglypro40000.png used on input line 403.
+Package pdftex.def Info: figs/asnglypro40000.png used on input line 415.
 (pdftex.def)             Requested size: 120.95892pt x 110.47456pt.
 
-<figs/asnglypro50000.png, id=172, 555.07375pt x 508.90125pt>
+<figs/asnglypro50000.png, id=177, 555.07375pt x 508.90125pt>
 File: figs/asnglypro50000.png Graphic file (type png)
 
 <use figs/asnglypro50000.png>
-Package pdftex.def Info: figs/asnglypro50000.png used on input line 403.
+Package pdftex.def Info: figs/asnglypro50000.png used on input line 415.
 (pdftex.def)             Requested size: 120.95892pt x 110.89479pt.
 
-<figs/asnaspmet30000.png, id=173, 557.08125pt x 511.9125pt>
+<figs/asnaspmet30000.png, id=179, 557.08125pt x 511.9125pt>
 File: figs/asnaspmet30000.png Graphic file (type png)
 
 <use figs/asnaspmet30000.png>
-Package pdftex.def Info: figs/asnaspmet30000.png used on input line 410.
+Package pdftex.def Info: figs/asnaspmet30000.png used on input line 424.
 (pdftex.def)             Requested size: 120.95892pt x 111.14479pt.
 
-<figs/asnaspmet40000.png, id=174, 568.1225pt x 514.92375pt>
+<figs/asnaspmet40000.png, id=180, 568.1225pt x 514.92375pt>
 File: figs/asnaspmet40000.png Graphic file (type png)
 
 <use figs/asnaspmet40000.png>
-Package pdftex.def Info: figs/asnaspmet40000.png used on input line 410.
+Package pdftex.def Info: figs/asnaspmet40000.png used on input line 424.
 (pdftex.def)             Requested size: 120.95892pt x 109.63002pt.
 
-<figs/asnaspmet50000.png, id=175, 573.14125pt x 512.91624pt>
+<figs/asnaspmet50000.png, id=181, 573.14125pt x 512.91624pt>
 File: figs/asnaspmet50000.png Graphic file (type png)
 
 <use figs/asnaspmet50000.png>
-Package pdftex.def Info: figs/asnaspmet50000.png used on input line 410.
+Package pdftex.def Info: figs/asnaspmet50000.png used on input line 424.
 (pdftex.def)             Requested size: 120.95892pt x 108.24779pt.
 
-Underfull \hbox (badness 1990) in paragraph at lines 417--418
+Underfull \hbox (badness 1990) in paragraph at lines 431--432
 []\OT1/ptm/m/n/10 A demo can be tested at: []$http : / / inf . ufrgs . br / []b
 igrisci /
  []
 
-(./paper.bbl
+[4 <./figs/radar.png> <./figs/slider.png> <./figs/alaasn30000.png> <./figs/alaa
+sn40000.png> <./figs/alaasn50000.png>] (./paper.bbl
 Missing character: There is no Â in font ptmr7t!
 Missing character: There is no ­ in font ptmr7t!
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 63.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 63.
- [4 <./figs/slider.png> <./figs/alaasn30000.png> <./figs/alaasn40000.png> <./fi
-gs/alaasn50000.png>])
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -596,26 +592,26 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 451.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 465.
 [5 <./figs/asnglypro30000.png> <./figs/asnglypro40000.png> <./figs/asnglypro500
 00.png> <./figs/asnaspmet30000.png> <./figs/asnaspmet40000.png> <./figs/asnaspm
 et50000.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 451.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 465.
  (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 451.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 451.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 465.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 465.
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 9DF989A293AC7F53ABE865BF68365933;974.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 451.
+(rerunfilecheck)             Checksum: 8447D702B56FD7C4DBF665B7C8DE2F42;976.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 465.
  ) 
 Here is how much of TeX's memory you used:
- 7491 strings out of 493304
- 115013 string characters out of 6139871
- 213151 words of memory out of 5000000
- 10791 multiletter control sequences out of 15000+600000
+ 7498 strings out of 493304
+ 115155 string characters out of 6139871
+ 211239 words of memory out of 5000000
+ 10796 multiletter control sequences out of 15000+600000
  35403 words of font info for 70 fonts, out of 8000000 for 9000
  960 hyphenation exceptions out of 8191
- 43i,9n,54p,1945b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,9n,54p,1038b,370s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
@@ -625,10 +621,10 @@ w/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8
 a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (5 pages, 1392578 bytes).
+Output written on paper.pdf (5 pages, 1620029 bytes).
 PDF statistics:
- 250 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
- 72 named destinations out of 1000 (max. 500000)
- 222 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 260 PDF objects out of 1000 (max. 8388607)
+ 221 compressed objects within 3 object streams
+ 73 named destinations out of 1000 (max. 500000)
+ 227 words of extra memory for PDF output out of 10000 (max. 10000000)
 
