@@ -272,7 +272,13 @@ The amino acids sequence of a protein is directly related to its structure in th
 %==========================================
 \section{Data characterization}
 
-The data for testing this visualization tool comes from the Kappa-conotoxin PVIIA, with amino acids sequence: $CRIPNQKCFQHLDDCCSRKCNRFNKCV$. Kappa-conotoxins are neurotoxical proteins extracted from sea slugs poison. They are inhibitors of the potassium channel and when injected in different organisms some alterations in their effect can be observed, from hyperactivity in fish to death when combined with other variants of conotoxins. The substitution of the asparagine ($N$) in the fifth position in the amino acids chain of the Kappa-conotoxin PVIIA by an alanine ($A$) is know to cause a reduction of 100\% in the toxicity of this protein~\cite{jacobsen2000single}~\cite{mir2016conotoxins}~\cite{akey2002inherited}.
+The data for testing this visualization tool comes from the Kappa-conotoxin PVIIA, with amino acids sequence: $CRIPNQKCFQHLDDCCSRKCNRFNKCV$. Its three dimensional structure, obtained with nuclear magnetic resonance (NMR) from the Protein Data Bank (PDB) under the code 1AV3, can be seen in Fig.~\ref{fig:pviia}. Kappa-conotoxins are neurotoxical proteins extracted from sea slugs poison. They are inhibitors of the potassium channel and when injected in different organisms some alterations in their effect can be observed, from hyperactivity in fish to death when combined with other variants of conotoxins. The substitution of the asparagine ($N$) in the fifth position in the amino acids chain of the Kappa-conotoxin PVIIA by an alanine ($A$) is know to cause a reduction of 100\% in the toxicity of this protein~\cite{jacobsen2000single}~\cite{mir2016conotoxins}~\cite{akey2002inherited}.
+
+\begin{figure}
+\includegraphics[width=0.7\linewidth]{figs/pviia.png}
+\caption{Three dimensional structure of the Kappa-conotoxin PVIIA.} 
+\label{fig:pviia}
+\end{figure}
 
 For this study, this asparagine was changed by all possible 20 amino acids, and for each resulting structure a molecular dynamics simulation was performed in order to evaluate its behavior during a predetermined period of time under chosen conditions. The simulations were performed with GROMACS~\cite{hess2008gromacs}, a software for biomolecules simulation, with the simulated time of 50ns. These simulations mimic the behavior of biomolecules in a solvent under controled temperature. From the data created versus time, the following attributes were studied.
 
@@ -371,32 +377,57 @@ The slider is the element that allows the user to change the data being visualiz
 \end{figure}
 
 %==========================================
-\section{Experiments}
+\section{Experiments and Discussion}
 %
 
-%==========================================
-\section{Results and Discussion}
-%
+All elements of this visualization tool were implemented using JavaScript, HTML and CSS, with the visualization library D3.js. The parallel coordinates plot uses the visual toolkit for multidimensional detectives Parallel Coordinates (0.7.0) (\url{http://syntagmatic.github.io/parallel-coordinates}). 
 
-%
+The radar plot was build from the implementations of Nadieh Bremer (\url{http://visualcinnamon.com/2015/10/different-look-d3-radar-chart.html}) and Micah Stubbs (\url{http://bl.ocks.org/micahstubbs/a772306d6fd49874ec92}). 
 
+As previously mentioned, the Kappa-conotoxin PVIIA was chosen as example for testing the visualization tool. We know from the start that the simulation containing the asparagine ($N$) in the fifth position of its amino acid chain represents the protein in its natural state. Also, the change of this asparagine by an alanine is reported to reduce 100\% of the proteins toxicity. When comparing the simulations with asparagine and alanine, thus, it would be expected to see some similarity between then, since the mutation don't destroy the protein, but also enough differences to justify the loss of function. 
+
+\subimages[htb]{Comparison between the simulations with asparagine (yellow) and alanine (red) for at three different moments.}{fig:alaasn}{%
+  \subimage[Timestep 30000]{.48}{alaasn30000.png}%
+  \subimage[Timestep 40000]{.48}{alaasn40000.png}% 
+  \\
+  \subimage[Timestep 50000]{.48}{alaasn50000.png}%
+}
+
+\subimages[htb]{Comparison between the simulations with asparagine (red), glycine (yellow) and proline (blue) for at three different moments.}{fig:asnglypro}{%
+  \subimage[Timestep 30000]{.48}{asnglypro30000.png}%
+  \subimage[Timestep 40000]{.48}{asnglypro40000.png}% 
+  \\
+  \subimage[Timestep 50000]{.48}{asnglypro50000.png}%
+}
+
+\subimages[htb]{Comparison between the simulations with asparagine (red), aspartic acid (yellow) and methionine (blue) for at three different moments.}{fig:asnaspmet}{%
+  \subimage[Timestep 30000]{.48}{asnaspmet30000.png}%
+  \subimage[Timestep 40000]{.48}{asnaspmet40000.png}% 
+  \\
+  \subimage[Timestep 50000]{.48}{asnaspmet50000.png}%
+}
 
 %------------------------------------------------------------------------- 
-\subsection{Future work}
-%
-
-
 %==========================================
+
 \section{Conclusion}
 %
-A demo can be tested at: http://inf.ufrgs.br/~bigrisci/parallel-coordinates/
+A demo can be tested at: \url{http://inf.ufrgs.br/~bigrisci/parallel-coordinates}
 
+\subsection{Future work}
+%
+This tool, although functional, is open for further improvements. It would be desired to expand the synchrony between different plots and the addition of new charts that could provide new insights about the data.
+
+A future extension of this project is to make it an available webtool allowing researchers to visualize their molecular dynamics simulation data. The user should be able to upload the output file generated from GROMACS and select the desired attributes. We hope this could help to better understandment of the simulations and comparisons between them.
+
+Another possible use for this tool, outside the field of molecular dynamics simulation, would be the visualization of convergence in population based optimization algorithms for multidimensional problems. This data seems to fit well within the techniques used in this project.
 
 %==========================================
 \iffinal
 % use section* for acknowledgement
 \section*{Acknowledgment}
 %
+I would like to thank the structural Bioinformatics and Computational Biology Lab (INF-UFRGS) for the great help generating and analysing the data for this project and testing the visualization tool. Special thanks to Dr. Marcio Dorn, Dr. Rodrigo Ligabue-Braun and Leonardo Alves. 
 
 \fi
 
