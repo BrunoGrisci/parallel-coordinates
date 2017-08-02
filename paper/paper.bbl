@@ -57,6 +57,37 @@ V.~Mathura and D.~Kolippakkam, ``Apdbase: Amino acid physico­chemical
 D.~L. Nelson, A.~L. Lehninger, and M.~M. Cox, \emph{Lehninger principles of
   biochemistry}.\hskip 1em plus 0.5em minus 0.4em\relax Macmillan, 2008.
 
+\bibitem{likhachev2016available}
+I.~Likhachev, N.~Balabaev, and O.~Galzitskaya, ``Available instruments for
+  analyzing molecular dynamics trajectories,'' \emph{The open biochemistry
+  journal}, vol.~10, p.~1, 2016.
+
+\bibitem{stukowski2009visualization}
+A.~Stukowski, ``Visualization and analysis of atomistic simulation data with
+  ovito--the open visualization tool,'' \emph{Modelling and Simulation in
+  Materials Science and Engineering}, vol.~18, no.~1, p. 015012, 2009.
+
+\bibitem{brehm2012travis}
+M.~Brehm and B.~Kirchner, ``Travis-a free analyzer and visualizer for monte
+  carlo and molecular dynamics trajectories,'' \emph{Journal of
+  cheminformatics}, vol.~4, no.~S1, p.~F1, 2012.
+
+\bibitem{garg2010visualization}
+M.~Garg, \emph{Visualization tool for molecular dynamics simulation}.\hskip 1em
+  plus 0.5em minus 0.4em\relax Florida Atlantic University, 2010.
+
+\bibitem{ribeiro2016qwikmd}
+J.~V. Ribeiro, R.~C. Bernardi, T.~Rudack, J.~E. Stone, J.~C. Phillips, P.~L.
+  Freddolino, and K.~Schulten, ``Qwikmd—integrative molecular dynamics
+  toolkit for novices and experts,'' \emph{Scientific reports}, vol.~6, p.
+  26536, 2016.
+
+\bibitem{scanlon1997solution}
+M.~J. Scanlon, D.~Naranjo, L.~Thomas, P.~F. Alewood, R.~J. Lewis, and D.~J.
+  Craik, ``Solution structure and proposed binding mechanism of a novel
+  potassium channel toxin $\kappa$-conotoxin pviia,'' \emph{Structure}, vol.~5,
+  no.~12, pp. 1585--1597, 1997.
+
 \bibitem{jacobsen2000single}
 R.~B. Jacobsen, E.~D. Koch, B.~Lange-Malecki, M.~Stocker, J.~Verhey, R.~M.
   Van~Wagoner, A.~Vyazovkina, B.~M. Olivera, and H.~Terlau, ``Single amino acid
