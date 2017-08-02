@@ -311,16 +311,6 @@ For this study, this asparagine was changed by all possible 20 amino acids, and 
 
 All the dimensions are continuous numerical values. As can be seen, the data of a single simulation is multidimensional and changes over the simulated time.
 
-%==========================================
-\section{Technical background}
-%
-
-\subsection{Grid}
-
-\subsection{Parallel Coordinates}
-
-\subsection{Radar Chart}
-
 %------------------------------------------------------------------------- 
 \section{Technique overview}
 %
@@ -341,14 +331,14 @@ The grid is an interactive table where the raw values of the data are displayed 
 
 \subsection{Parallel Coordinates}
 
-The parallel coordinates chart is used to show a global view of the data, displaying all the items in a given time at once and allowing the user to view the general "shape" of the simulations and spread of the values between items.
+The parallel coordinates chart~\cite{fanea2005interactive}~\cite{inselberg1990parallel}~\cite{inselberg1985plane} is used to show a global view of the data, displaying all the items in a given time at once and allowing the user to view the general "shape" of the simulations and spread of the values between items.
 
 \begin{figure}
 \includegraphics[width=1.0\linewidth]{figs/brush.png}
 \caption{Example of use of the brush.} 
 \label{fig:brush}
 \end{figure}
-\paragraph*{Axis brushing} The brush is the filtering operation of the parallel coordinates and can be seen in Fig.~\ref{fig:brush}. Draging the mouse along an axis select the items in that range. This change is reflected on the grid.
+\paragraph*{Axis brushing} The brush is the filtering operation of the parallel coordinates~\cite{siirtola2006interacting} and can be seen in Fig.~\ref{fig:brush}. Draging the mouse along an axis select the items in that range. This change is reflected on the grid.
 \paragraph*{Axis sorting} When double clicking an axis the order of its values is inverted. This change is reflected on the radar chart.
 \paragraph*{Axis reordering} When right-clicking an axis and draging it to left or right the axes are reordered. This change is reflected on the radar chart.
 \paragraph*{Recoloring by axis selection} The color of the lines of the parallel coordinates is defined by the range of the selected axis. Clicking an axis change the dimension used for coloring. Figures~\ref{fig:dssp} and~\ref{fig:gyrate} show the colors for two different dimensions. This function is useful when analysing one dimension while wanting to keep in mind the behavior of another.
@@ -367,7 +357,7 @@ The parallel coordinates chart is used to show a global view of the data, displa
 
 \subsection{Radar Chart}
 
-The objective of the radar chart, showed in Fig.~\ref{fig:radar}, is to visualize and compare specif items of the data, i.e., single simulations. The hypothesis is that overlaping the shapes of the lines from the parallel coordinates in a radial way makes it easier com see the similarities and differences between a small number of items, while the global view is better represented by the parallel coordinates chart since for many shapes the radar chart becomes convoluted.  
+The objective of the radar chart~\cite{saary2008radar}~\cite{mosley1999benchmarking}, showed in Fig.~\ref{fig:radar}, is to visualize and compare specif items of the data, i.e., single simulations. The hypothesis is that overlaping the shapes of the lines from the parallel coordinates in a radial way makes it easier com see the similarities and differences between a small number of items, while the global view is better represented by the parallel coordinates chart since for many shapes the radar chart becomes convoluted.  
 
 \begin{figure}
 \includegraphics[width=0.8\linewidth]{figs/radar.png}
@@ -428,6 +418,9 @@ Finally, it would be of interest to identify possible mutation candidates that w
 
 \section{Conclusion}
 %
+
+In this paper it was presented a tool for the visual analysis of molecular dynamics simulation, focusing on the ability to compare two or more simulations. From the available charts it should be possible to gain insights that can inspire further investigation about the data and the biological problem in question. 
+
 A demo can be tested at: \url{http://inf.ufrgs.br/~bigrisci/parallel-coordinates}
 
 \subsection{Future work}
@@ -443,7 +436,7 @@ Another possible use for this tool, outside the field of molecular dynamics simu
 % use section* for acknowledgement
 \section*{Acknowledgment}
 %
-I would like to thank the structural Bioinformatics and Computational Biology Lab (INF-UFRGS) for the great help generating and analysing the data for this project and testing the visualization tool. Special thanks to Dr. Marcio Dorn, Dr. Rodrigo Ligabue-Braun and Leonardo Alves. 
+I would like to thank the structural Bioinformatics and Computational Biology Lab (INF-UFRGS) for the great help generating and analysing the data for this project and testing the visualization tool. Special thanks to Dr. Marcio Dorn, Dr. Rodrigo Ligabue-Braun and Leonardo Alves Santos. 
 
 \fi
 

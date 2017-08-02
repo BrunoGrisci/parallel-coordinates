@@ -138,4 +138,32 @@ V.~N. Maiorov and G.~M. Crippen, ``Significance of root-mean-square deviation
   in comparing three-dimensional structures of globular proteins,''
   \emph{Journal of molecular biology}, vol. 235, no.~2, pp. 625--634, 1994.
 
+\bibitem{fanea2005interactive}
+E.~Fanea, S.~Carpendale, and T.~Isenberg, ``An interactive 3d integration of
+  parallel coordinates and star glyphs,'' in \emph{Information Visualization,
+  2005. INFOVIS 2005. IEEE Symposium on}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2005, pp. 149--156.
+
+\bibitem{inselberg1990parallel}
+A.~Inselberg and B.~Dimsdale, ``Parallel coordinates: a tool for visualizing
+  multi-dimensional geometry.(1990),'' \emph{DOI: http://dx. doi.
+  org/10.1109/VISUAL}, 1990.
+
+\bibitem{inselberg1985plane}
+A.~Inselberg, ``The plane with parallel coordinates,'' \emph{The visual
+  computer}, vol.~1, no.~2, pp. 69--91, 1985.
+
+\bibitem{siirtola2006interacting}
+H.~Siirtola and K.-J. R{\"a}ih{\"a}, ``Interacting with parallel coordinates,''
+  \emph{Interacting with Computers}, vol.~18, no.~6, pp. 1278--1309, 2006.
+
+\bibitem{saary2008radar}
+M.~J. Saary, ``Radar plots: a useful way for presenting multivariate health
+  care data,'' \emph{Journal of clinical epidemiology}, vol.~61, no.~4, pp.
+  311--317, 2008.
+
+\bibitem{mosley1999benchmarking}
+H.~Mosley and A.~Mayer, ``Benchmarking national labour market performance: A
+  radar chart approach,'' WZB Discussion paper, Tech. Rep., 1999.
+
 \end{thebibliography}

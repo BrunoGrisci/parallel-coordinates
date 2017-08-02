@@ -277,14 +277,12 @@ The amino acids sequence of a protein is directly related to its structure in th
 
 \subsection{Related work}
 %
-The work in~\cite{likhachev2016available} reviews some of the available Instruments when analyzing molecular dynamics trajectories, including visualization tools. OVITO~\cite{stukowski2009visualization} is an open visualization tool for atomistic simulation data. TRAVIS~\cite{brehm2012travis} is a free analyzer and visualizer for Monte Carlo and molecular dynamics trajectories. 
- 
-
+The work in~\cite{likhachev2016available} reviews some of the available instruments when analyzing molecular dynamics trajectories, including visualization tools. OVITO~\cite{stukowski2009visualization} is an open visualization tool for atomistic simulation data. TRAVIS~\cite{brehm2012travis} is a free analyzer and visualizer for Monte Carlo and molecular dynamics trajectories. The study in~\cite{garg2010visualization} presents a visualization tool for many tasks of molecular dynamics simulation. QwikMD~\cite{ribeiro2016qwikmd} is a toolkit that includes tools for analyzing simulations.
 
 %==========================================
 \section{Data characterization}
 
-The data for testing this visualization tool comes from the Kappa-conotoxin PVIIA, with amino acids sequence: $CRIPNQKCFQHLDDCCSRKCNRFNKCV$. Its three dimensional structure, obtained with nuclear magnetic resonance (NMR) from the Protein Data Bank (PDB) under the code 1AV3, can be seen in Fig.~\ref{fig:pviia}. Kappa-conotoxins are neurotoxical proteins extracted from sea slugs poison. They are inhibitors of the potassium channel and when injected in different organisms some alterations in their effect can be observed, from hyperactivity in fish to death when combined with other variants of conotoxins. The substitution of the asparagine ($N$) in the fifth position in the amino acids chain of the Kappa-conotoxin PVIIA by an alanine ($A$) is know to cause a reduction of 100\% in the toxicity of this protein~\cite{jacobsen2000single}~\cite{mir2016conotoxins}~\cite{akey2002inherited}.
+The data for testing this visualization tool comes from the Kappa-conotoxin PVIIA, with amino acids sequence: $CRIPNQKCFQHLDDCCSRKCNRFNKCV$. Its three dimensional structure, obtained with nuclear magnetic resonance (NMR) from the Protein Data Bank (PDB) under the code 1AV3~\cite{scanlon1997solution}, can be seen in Fig.~\ref{fig:pviia}. Kappa-conotoxins are neurotoxical proteins extracted from sea slugs poison. They are inhibitors of the potassium channel and when injected in different organisms some alterations in their effect can be observed, from hyperactivity in fish to death when combined with other variants of conotoxins. The substitution of the asparagine ($N$) in the fifth position in the amino acids chain of the Kappa-conotoxin PVIIA by an alanine ($A$) is know to cause a reduction of 100\% in the toxicity of this protein~\cite{jacobsen2000single}~\cite{mir2016conotoxins}~\cite{akey2002inherited}.
 
 \begin{figure}
 \includegraphics[width=0.7\linewidth]{figs/pviia.png}
@@ -320,6 +318,27 @@ All the dimensions are continuous numerical values. As can be seen, the data of 
 \subsection{Grid}
 
 \subsection{Parallel Coordinates}
+
+Parallel Coordinates are a visual representation of multidimensional data capable of displaying entire datasets and allowing interactions.
+
+Parallel Coordinates are a powerful visual representation of multi-
+dimensional data due to their capacity to display the entire dataset
+while supporting interactions that lead to identification of rela-
+tionships among items and among dimensions [6, 7]. Several re-
+searchers have been working on methods for improving aspects of
+their capability to support visual analysis of multi-dimensional data.
+The main motivation for developing a new visual representation is
+to address the problem of overlapping polylines. When two or more
+items in the data have the same values for a subset of the attributes,
+the polylines drawn to show each item may overlap, depending on
+the order in which the attributes are plotted. This artifact frequently
+occurs in Parallel Coordinates when even a very small number of
+data items are shown. In this case it is hard to read the visualization
+to determine the values of dimension for a specific data item. In ad-
+dition, due to the nature of Parallel Coordinates the order in which
+data items are plotted is lost. In cases where this order is meaning-
+ful we lose the ability to compare the development of data values
+along one dimension or to compare it with another dimension
 
 \subsection{Radar Chart}
 
@@ -400,7 +419,7 @@ As previously mentioned, the Kappa-conotoxin PVIIA was chosen as example for tes
 
 This comparison is showed in \figref{fig:alaasn} for three different moments in the simulations. The greatest discrepancy observed are the DSSP and RMSF attributes, what could indicate the 3D structure of the proteins have significant differences.
 
-\subimages[htb]{Comparison between the simulations with asparagine (yellow) and alanine (red) for at three different moments.}{fig:alaasn}{%
+\subimages[htb]{Comparison between the simulations with asparagine (yellow) and alanine (red) at three different moments.}{fig:alaasn}{%
   \subimage[Time step 30000]{.48}{alaasn30000.png}%
   \subimage[Time step 40000]{.48}{alaasn40000.png}% 
   \\
@@ -409,7 +428,7 @@ This comparison is showed in \figref{fig:alaasn} for three different moments in 
 
 In another test, we can compare the simulation with asparagine to the ones with glycine and proline, as in \figref{fig:asnglypro}. The amino acids glycine and proline, due to their characteristics, usually interfere greatly in the structure of a protein when placed instead of another.
 
-\subimages[htb]{Comparison between the simulations with asparagine (red), glycine (yellow) and proline (blue) for at three different moments.}{fig:asnglypro}{%
+\subimages[htb]{Comparison between the simulations with asparagine (red), glycine (yellow) and proline (blue) at three different moments.}{fig:asnglypro}{%
   \subimage[Time step 30000]{.48}{asnglypro30000.png}%
   \subimage[Time step 40000]{.48}{asnglypro40000.png}% 
   \\
@@ -418,7 +437,7 @@ In another test, we can compare the simulation with asparagine to the ones with 
 
 Finally, it would be of interest to identify possible mutation candidates that would interfere the least with the original protein structure and function. Using visual inspection (\figref{fig:asnaspmet}), the amino acids aspartic acid and methionine, based only on the simulation attributes, seem to be potential options. Of course, any further conclusion is depended of biological analysis, with the visualization tool serving only as a first step for insights. 
 
-\subimages[htb]{Comparison between the simulations with asparagine (red), aspartic acid (yellow) and methionine (blue) for at three different moments.}{fig:asnaspmet}{%
+\subimages[htb]{Comparison between the simulations with asparagine (red), aspartic acid (yellow) and methionine (blue) at three different moments.}{fig:asnaspmet}{%
   \subimage[Time step 30000]{.48}{asnaspmet30000.png}%
   \subimage[Time step 40000]{.48}{asnaspmet40000.png}% 
   \\

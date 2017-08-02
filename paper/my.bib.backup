@@ -25,35 +25,6 @@
   publisher={Springer}
 }
 
-@article{siirtola2006interacting,
-  title={Interacting with parallel coordinates},
-  author={Siirtola, Harri and R{\"a}ih{\"a}, Kari-Jouko},
-  journal={Interacting with Computers},
-  volume={18},
-  number={6},
-  pages={1278--1309},
-  year={2006},
-  publisher={Oxford University Press Oxford, UK}
-}
-
-@article{saary2008radar,
-  title={Radar plots: a useful way for presenting multivariate health care data},
-  author={Saary, M Joan},
-  journal={Journal of clinical epidemiology},
-  volume={61},
-  number={4},
-  pages={311--317},
-  year={2008},
-  publisher={Elsevier}
-}
-
-@techreport{mosley1999benchmarking,
-  title={Benchmarking national labour market performance: A radar chart approach},
-  author={Mosley, Hugh and Mayer, Antje},
-  year={1999},
-  institution={WZB Discussion paper}
-}
-
 @article{scanlon1997solution,
   title={Solution structure and proposed binding mechanism of a novel potassium channel toxin $\kappa$-conotoxin PVIIA},
   author={Scanlon, Martin J and Naranjo, David and Thomas, Linda and Alewood, Paul F and Lewis, Richard J and Craik, David J},
