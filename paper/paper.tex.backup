@@ -277,7 +277,7 @@ The amino acids sequence of a protein is directly related to its structure in th
 
 \subsection{Related work}
 %
-The work in~\cite{likhachev2016available} reviews some of the available instruments when analyzing molecular dynamics trajectories, including visualization tools. OVITO~\cite{stukowski2009visualization} is an open visualization tool for atomistic simulation data. TRAVIS~\cite{brehm2012travis} is a free analyzer and visualizer for Monte Carlo and molecular dynamics trajectories. The study in~\cite{garg2010visualization} presents a visualization tool for many tasks of molecular dynamics simulation. QwikMD~\cite{ribeiro2016qwikmd} is a toolkit that includes tools for analyzing simulations.
+The work of Likhachev et al., 2016~\cite{likhachev2016available} reviews some of the available instruments when analyzing molecular dynamics trajectories, including visualization tools. OVITO~\cite{stukowski2009visualization} is an open visualization tool for atomistic simulation data. TRAVIS~\cite{brehm2012travis} is a free analyzer and visualizer for Monte Carlo and molecular dynamics trajectories. The study of Garg, 2010~\cite{garg2010visualization} presents a visualization tool for many tasks of molecular dynamics simulation. QwikMD~\cite{ribeiro2016qwikmd} is a toolkit that includes tools for analyzing simulations.
 
 %==========================================
 \section{Data characterization}
@@ -311,37 +311,6 @@ For this study, this asparagine was changed by all possible 20 amino acids, and 
 
 All the dimensions are continuous numerical values. As can be seen, the data of a single simulation is multidimensional and changes over the simulated time.
 
-%==========================================
-\section{Technical background}
-%
-
-\subsection{Grid}
-
-\subsection{Parallel Coordinates}
-
-Parallel Coordinates are a visual representation of multidimensional data capable of displaying entire datasets and allowing interactions.
-
-Parallel Coordinates are a powerful visual representation of multi-
-dimensional data due to their capacity to display the entire dataset
-while supporting interactions that lead to identification of rela-
-tionships among items and among dimensions [6, 7]. Several re-
-searchers have been working on methods for improving aspects of
-their capability to support visual analysis of multi-dimensional data.
-The main motivation for developing a new visual representation is
-to address the problem of overlapping polylines. When two or more
-items in the data have the same values for a subset of the attributes,
-the polylines drawn to show each item may overlap, depending on
-the order in which the attributes are plotted. This artifact frequently
-occurs in Parallel Coordinates when even a very small number of
-data items are shown. In this case it is hard to read the visualization
-to determine the values of dimension for a specific data item. In ad-
-dition, due to the nature of Parallel Coordinates the order in which
-data items are plotted is lost. In cases where this order is meaning-
-ful we lose the ability to compare the development of data values
-along one dimension or to compare it with another dimension
-
-\subsection{Radar Chart}
-
 %------------------------------------------------------------------------- 
 \section{Technique overview}
 %
@@ -358,18 +327,18 @@ The grid is an interactive table where the raw values of the data are displayed 
 \label{fig:grid}
 \end{figure}
 \paragraph*{Item highlighting} When hoving the mouse over a line in the grid, that line is highlited. This operation also reflects on the other charts.
-\paragraph*{Item selection} When right-clicking on a line of the grid with the mouse that line is selected and the item is fixed on the charts. The selected line is becomes darker on the parallel coordinates chart.
+\paragraph*{Item selection} When right-clicking on a line of the grid with the mouse that line is selected and the item is fixed on the charts. The selected line becomes darker on the parallel coordinates chart.
 
 \subsection{Parallel Coordinates}
 
-The parallel coordinates chart is used to show a global view of the data, displaying all the items in a given time at once and allowing the user to view the general "shape" of the simulations and spread of the values between items.
+The parallel coordinates chart~\cite{fanea2005interactive}~\cite{inselberg1990parallel}~\cite{inselberg1985plane} is used to show a global view of the data, displaying all the items in a given time at once and allowing the user to view the general "shape" of the simulations and spread of the values between items.
 
 \begin{figure}
 \includegraphics[width=1.0\linewidth]{figs/brush.png}
 \caption{Example of use of the brush.} 
 \label{fig:brush}
 \end{figure}
-\paragraph*{Axis brushing} The brush is the filtering operation of the parallel coordinates and can be seen in Fig.~\ref{fig:brush}. Draging the mouse along an axis select the items in that range. This change is reflected on the grid.
+\paragraph*{Axis brushing} The brush is the filtering operation of the parallel coordinates~\cite{siirtola2006interacting} and can be seen in Fig.~\ref{fig:brush}. Draging the mouse along an axis select the items in that range. This change is reflected on the grid.
 \paragraph*{Axis sorting} When double clicking an axis the order of its values is inverted. This change is reflected on the radar chart.
 \paragraph*{Axis reordering} When right-clicking an axis and draging it to left or right the axes are reordered. This change is reflected on the radar chart.
 \paragraph*{Recoloring by axis selection} The color of the lines of the parallel coordinates is defined by the range of the selected axis. Clicking an axis change the dimension used for coloring. Figures~\ref{fig:dssp} and~\ref{fig:gyrate} show the colors for two different dimensions. This function is useful when analysing one dimension while wanting to keep in mind the behavior of another.
@@ -388,7 +357,7 @@ The parallel coordinates chart is used to show a global view of the data, displa
 
 \subsection{Radar Chart}
 
-The objective of the radar chart, showed in Fig.~\ref{fig:radar}, is to visualize and compare specif items of the data, i.e., single simulations. The hypothesis is that overlaping the shapes of the lines from the parallel coordinates in a radial way makes it easier com see the similarities and differences between a small number of items, while the global view is better represented by the parallel coordinates chart since for many shapes the radar chart becomes convoluted.  
+The objective of the radar chart~\cite{saary2008radar}~\cite{mosley1999benchmarking}, showed in Fig.~\ref{fig:radar}, is to visualize and compare specific items of the data, i.e., single simulations. The hypothesis is that overlaping the shapes of the lines from the parallel coordinates in a radial way makes it easier to see the similarities and differences between a small number of items, while the global view is better represented by the parallel coordinates chart since for many shapes the radar chart becomes convoluted.  
 
 \begin{figure}
 \includegraphics[width=0.8\linewidth]{figs/radar.png}
@@ -411,11 +380,11 @@ The slider is the element that allows the user to change the data being visualiz
 \section{Experiments and Discussion}
 %
 
-All elements of this visualization tool were implemented using JavaScript, HTML and CSS, with the visualization library D3.js. The parallel coordinates chart uses the visual toolkit for multidimensional detectives Parallel Coordinates (0.7.0) (\url{http://syntagmatic.github.io/parallel-coordinates}). 
+All elements of this visualization tool were implemented using JavaScript, HTML and CSS, with the visualization library D3.js. The parallel coordinates chart uses the visual toolkit for multidimensional detectives Parallel Coordinates (0.7.0) \footnote{\url{http://syntagmatic.github.io/parallel-coordinates}}. 
 
-The radar chart was build from the implementations of Nadieh Bremer (\url{http://visualcinnamon.com/2015/10/different-look-d3-radar-chart.html}) and Micah Stubbs (\url{http://bl.ocks.org/micahstubbs/a772306d6fd49874ec92}). 
+The radar chart was build from the implementations of Nadieh Bremer \footnote{\url{http://visualcinnamon.com/2015/10/different-look-d3-radar-chart.html}} and Micah Stubbs \footnote{\url{http://bl.ocks.org/micahstubbs/a772306d6fd49874ec92}}. 
 
-As previously mentioned, the Kappa-conotoxin PVIIA was chosen as example for testing the visualization tool. We know from the start that the simulation containing the asparagine ($N$) in the fifth position of its amino acid chain represents the protein in its natural state. Also, the change of this asparagine by an alanine is reported to reduce 100\% of the proteins toxicity. When comparing the simulations with asparagine and alanine, thus, it would be expected to see some similarity between then, since the mutation don't destroy the protein, but also enough differences to justify the loss of function. 
+As previously mentioned, the Kappa-conotoxin PVIIA was chosen as example for testing the visualization tool. We know from the start that the simulation containing the asparagine ($N$) in the fifth position of its amino acid chain represents the protein in its natural state. Also, the change of this asparagine by an alanine is reported to reduce 100\% of the proteins toxicity. When comparing the simulations with asparagine and alanine, thus, it would be expected to see some similarity between them, since the mutation does not destroy the protein, but also enough differences to justify the loss of function. 
 
 This comparison is showed in \figref{fig:alaasn} for three different moments in the simulations. The greatest discrepancy observed are the DSSP and RMSF attributes, what could indicate the 3D structure of the proteins have significant differences.
 
@@ -449,6 +418,9 @@ Finally, it would be of interest to identify possible mutation candidates that w
 
 \section{Conclusion}
 %
+
+In this paper it was presented a tool for the visual analysis of molecular dynamics simulation, focusing on the ability to compare two or more simulations. From the available charts it should be possible to gain insights that can inspire further investigation about the data and the biological problem in question. 
+
 A demo can be tested at: \url{http://inf.ufrgs.br/~bigrisci/parallel-coordinates}
 
 \subsection{Future work}
@@ -464,11 +436,9 @@ Another possible use for this tool, outside the field of molecular dynamics simu
 % use section* for acknowledgement
 \section*{Acknowledgment}
 %
-I would like to thank the structural Bioinformatics and Computational Biology Lab (INF-UFRGS) for the great help generating and analysing the data for this project and testing the visualization tool. Special thanks to Dr. Marcio Dorn, Dr. Rodrigo Ligabue-Braun and Leonardo Alves. 
+I would like to thank the structural Bioinformatics and Computational Biology Lab (INF-UFRGS) for the great help generating and analysing the data for this project and testing the visualization tool. Special thanks to Dr. Marcio Dorn, Dr. Rodrigo Ligabue-Braun and Leonardo Alves Santos. 
 
 \fi
-
-
 
 %==========================================
 
