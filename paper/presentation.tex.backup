@@ -122,10 +122,42 @@ Universidade Federal do Rio Grande do Sul \\ % Your institution for the title pa
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{1AJX}
+\frametitle{Proteínas}
 %\begin{figure}
 %\includegraphics[width=0.7\linewidth]{1AJX.png}
 %\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dinâmica Molecular}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Dimensões}
+\begin{itemize}
+\item DSSP: estrutura secundária
+\item SASA: solvent-accessible surface area
+\item GYRATE: raio de giro
+\item ENERGY: energia total do sistema
+\item RMSF: root mean square fluctuation of atomic positions
+\end{itemize}
+Todas as dimensões são valores numéricos contínuos.
+\end{frame}
+
+\begin{frame}
+\frametitle{Kappa-conotoxin PVIIA}
+\begin{itemize}
+ \item Toxina encontrada em lesmas marinhas.
+ \item $CRIPNQKCFQHLDDCCSRKCNRFNKCV$
+ \item Mutação da asparagina (N) na quinta posição por uma alanina (A) causa perda de 100\% da toxicidade.
+\end{itemize}
+
+\begin{figure}
+\includegraphics[width=0.3\linewidth]{figs/pviia.png}
+\caption{Estrutura 3D da Kappa-conotoxin PVIIA.} 
+\label{fig:pviia}
+\end{figure}
 \end{frame}
 
 %------------------------------------------------
@@ -150,11 +182,21 @@ Universidade Federal do Rio Grande do Sul \\ % Your institution for the title pa
 \frametitle{Funcionalidades}
 \begin{itemize}
 \item Grid
-\begin{itemize}
-\item Grid
-\end{itemize}
+  \begin{itemize}
+  \item Destaque de item
+  \item Seleção de item
+  \end{itemize}
 \item Parallel Coordinates
+  \begin{itemize}
+  \item Filtragem de eixo
+  \item Ordenação de eixo
+  \item Reposicionamento de eixo
+  \item Coloração por seleção de eixo
+  \end{itemize}
 \item Radar Chart
+  \begin{itemize}
+  \item Destaque de item
+  \end{itemize}
 \item Slider
 \end{itemize}
 \end{frame}

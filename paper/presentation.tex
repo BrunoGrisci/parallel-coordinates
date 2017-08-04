@@ -75,8 +75,9 @@
 
 %\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
 }
-
 \usepackage{graphicx} % Allows including images
+\usepackage{subimages}
+\usepackage{media9}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage[brazilian]{babel}
 \usepackage[utf8]{inputenc}
@@ -122,10 +123,69 @@ Universidade Federal do Rio Grande do Sul \\ % Your institution for the title pa
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{1AJX}
-%\begin{figure}
-%\includegraphics[width=0.7\linewidth]{1AJX.png}
-%\end{figure}
+\frametitle{Proteínas}
+\begin{itemize}
+\item Proteínas são macromoléculas essenciais para o funcionamento do organismo dos seres-vivos.
+\item São formadas por uma sequência unidimensional de amino ́ácidos própria e única.
+\item Na natureza, existem 20 cadeias laterais, diferenciando os 20 amino ́ácidos básicos.
+\end{itemize}
+\begin{figure}
+\includegraphics[width=0.7\linewidth]{figs/protein.jpg}
+\caption{Estrutura das proteínas.} 
+\label{fig:protein}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dinâmica Molecular}
+\begin{figure}
+    \centering
+    \includemedia[
+    width=0.6\linewidth,height=0.3375\linewidth,
+    activate=pageopen,
+    flashvars={
+        modestbranding=1 % no YT logo in control bar
+        &autohide=1 % controlbar autohide
+        &showinfo=0 % no title and other info before start
+        &rel=0 % no related videos after end
+    }
+        ]{}{https://www.youtube.com/watch?v=Aj5f0XSv0t8}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dimensões}
+\begin{itemize}
+\item DSSP: estrutura secundária
+\item SASA: solvent-accessible surface area
+\item GYRATE: raio de giro
+\item ENERGY: energia total do sistema
+\item RMSF: root mean square fluctuation of atomic positions
+\end{itemize}
+Todas as dimensões são valores numéricos contínuos.
+\end{frame}
+
+\begin{frame}
+\frametitle{Kappa-conotoxin PVIIA}
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{figs/lesma.jpg}
+\caption{Lesma marinha.} 
+\label{fig:lesma}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kappa-conotoxin PVIIA}
+\begin{itemize}
+ \item Toxina encontrada em lesmas marinhas.
+ \item $CRIPNQKCFQHLDDCCSRKCNRFNKCV$
+ \item Mutação da asparagina (N) na quinta posição por uma alanina (A) causa perda de 100\% da toxicidade.
+\end{itemize}
+\begin{figure}
+\includegraphics[width=0.3\linewidth]{figs/pviia.png}
+\caption{Estrutura 3D da Kappa-conotoxin PVIIA.} 
+\label{fig:pviia}
+\end{figure}
 \end{frame}
 
 %------------------------------------------------
@@ -172,6 +232,38 @@ Universidade Federal do Rio Grande do Sul \\ % Your institution for the title pa
 %------------------------------------------------
 \section{Resultados} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
+
+\begin{frame}
+\frametitle{Visão geral}
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{figs/all.png}
+\end{figure}
+Disponível em: \url{http://inf.ufrgs.br/~bigrisci/parallel-coordinates}
+\end{frame}
+
+\begin{frame}
+\frametitle{Comparação N x A}
+
+\subimages[htb]{Comparação entre simulações com asparagina (amarelo) e alanina (vermelho) em 3 momentos distintos.}{fig:alaasn}{%
+  \subimage[Time step 30000]{.3}{alaasn30000.png}%
+  \subimage[Time step 40000]{.3}{alaasn40000.png}% 
+  \subimage[Time step 50000]{.3}{alaasn50000.png}%
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Trabalhos futuros}
+\begin{itemize}
+\item Teste com outras proteínas;
+\item Ferramenta web;
+\item Adicionar novas visualizações;
+\item Experimentar com outros tipos de dados.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\Huge{\centerline{Obrigado :)}}
+\end{frame}
 
 %----------------------------------------------------------------------------------------
 
